@@ -38,24 +38,36 @@ const HeroSection = () => {
   return (
     <div className="hero__section">
       <div className="container">
-        <div className="hero__section--container">
-          <div className="hero__section--title">
-            <h3>Welcome, john</h3>
-            <p>Let's explore DKSH's top talent</p>
+        <div className="hero__section--box">
+          <div className="hero__section--container">
+            <div className="hero__section--title">
+              <h3>Welcome, john</h3>
+              <p>Let's explore DKSH's top talent</p>
+            </div>
+            <div className="hero__section--buttons">
+              <ul className="mb-2">
+                {Buttons.map((item, index) => (
+                  <li key={item.id}>
+                    <button
+                      className={index === isActive ? "active" : ""}
+                      onClick={() => setIsActive(item.id)}
+                    >
+                      {item.text}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="hero__section--buttons">
-            <ul className="mb-2">
-              {Buttons.map((item, index) => (
-                <li key={item.id}>
-                  <button
-                    className={index === isActive ? "active" : ""}
-                    onClick={() => setIsActive(item.id)}
-                  >
-                    {item.text}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <div className="hero__section--vectors">
+            <div
+              className="hero__section--left"
+              style={{ backgroundImage: "url(/images/leftVector.png)" }}
+            ></div>
+            <div
+              className="hero__section--right"
+              style={{ backgroundImage: "url(/images/rightVector.png)" }}
+            ></div>
           </div>
         </div>
       </div>

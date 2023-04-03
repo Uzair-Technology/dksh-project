@@ -1,5 +1,5 @@
 import { Avatar, Grid } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiHomeCircle } from "react-icons/bi";
 import { IoPeopleOutline } from "react-icons/io5";

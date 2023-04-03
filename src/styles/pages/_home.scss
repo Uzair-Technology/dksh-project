@@ -95,12 +95,23 @@
     }
   }
 
+  &--label {
+    margin: 0 !important;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
   &--dropdown {
     margin-right: 10px;
     border: 1px solid var(--color-senary);
     padding: 8px 10px;
     display: flex;
+    align-items: center;
     border-radius: 12px;
+    span {
+      font-size: 12px;
+      color: var(--font-color);
+    }
     button {
       background-color: transparent;
       border: none;
@@ -113,13 +124,14 @@
       flex-direction: row;
       font-style: normal;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 10px;
       line-height: 20px;
       color: var(--font-color);
       margin-right: 5px;
       svg {
         font-size: 16px;
         margin-right: 5px;
+        margin-top: -5px;
         color: var(--font-color);
       }
     }
@@ -128,16 +140,33 @@
       background-color: var(--background-color);
       border: none;
       color: var(--font-color);
+      width: 200px;
 
       option {
         color: var(--font-color);
+        border: none;
       }
       :active {
         border: none;
       }
-      :focus {
-        border: none;
-      }
     }
   }
+}
+
+select#cars {
+  border: none !important;
+  width: 140px !important;
+}
+
+select#cars:focus {
+  outline: none;
+}
+
+select#sort {
+  border: none !important;
+  width: 140px !important;
+}
+
+select#sort:focus {
+  outline: none;
 }

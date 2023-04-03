@@ -50,26 +50,26 @@ const Home = () => {
   };
 
   //* handle change for price
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const open2 = Boolean(anchorEl2);
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
+
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
+  const open3 = Boolean(anchorEl3);
+  const handleClick3 = (event) => {
+    setAnchorEl3(event.currentTarget);
+  };
+  const handleClose3 = () => {
+    setAnchorEl3(null);
   };
 
   //*code for filtration
   useEffect(() => {
-    const name = "";
-    const lowerCaseValue = name.toLowerCase().trim();
-    const city = "Barcelona";
-    const rating = "3.0356909" * 1;
-    console.log();
-    console.log(name);
-    console.log("i run again");
-    //Filter options updated so apply all filters here
-
     const result = jsonData
       //*filter for services
       .filter((data) => {
@@ -99,6 +99,8 @@ const Home = () => {
     console.log("Results from new", result);
     setData(result);
   }, [price, sort, service, available, talent]);
+
+  const ITEM_HEIGHT = 48;
 
   return (
     <div>
@@ -153,7 +155,7 @@ const Home = () => {
                     <label htmlFor="prices">
                       <FaMoneyBillWave /> Price per hr:
                     </label>
-                    <button
+                    {/* <button
                       id="basic-button"
                       aria-controls={open ? "basic-menu" : undefined}
                       aria-haspopup="true"
@@ -174,50 +176,107 @@ const Home = () => {
                       <MenuItem onClick={handleClose}>Profile</MenuItem>
                       <MenuItem onClick={handleClose}>My account</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu>
+                    </Menu> */}
                   </div>
                 </div>
                 <div className="search__section--services">
-                  <div className="search__section--dropdown">
-                    <label for="services">
-                      <FaTags /> Services:
+                  <div>
+                    <label
+                      for="services"
+                      className="search__section--dropdown"
+                      id="basic-button"
+                      aria-controls={open2 ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open2 ? "true" : undefined}
+                      onClick={handleClick2}
+                    >
+                      <FaTags />{" "}
+                      <p className="search__section--label">Services:</p>{" "}
+                      <span>{service}</span>
                     </label>
 
-                    <select
-                      name="cars"
-                      id="cars"
-                      value={service}
-                      onChange={(e) => setService(e.target.value)}
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl2}
+                      open={open2}
+                      onClose={handleClose2}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                      PaperProps={{
+                        style: {
+                          maxHeight: ITEM_HEIGHT * 4.5,
+                          width: "13ch",
+                          marginTop: ".3ch",
+                          marginLeft: "0ch",
+                        },
+                      }}
                     >
-                      <option value="all" selected>
-                        All
-                      </option>
-                      <option value="UI">UI Design</option>
-                      <option value="Front-end">Frontend</option>
-                      <option value="Backend">Backend</option>
-                      <option value="NFT">Nft</option>
-                    </select>
+                      <select
+                        name="cars"
+                        id="cars"
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
+                      >
+                        <option value="all" selected>
+                          All
+                        </option>
+                        <option value="UI">UI Design</option>
+                        <option value="Front-end">Frontend</option>
+                        <option value="Backend">Backend</option>
+                        <option value="NFT">Nft</option>
+                      </select>
+                    </Menu>
                   </div>
                 </div>
                 <div className="search__section--rate">
-                  <div className="search__section--dropdown">
-                    <label for="rating">
-                      <CgSortAz size={20} /> Sort by:
+                  <div className="search__section--dropdow">
+                    <label
+                      for="sort"
+                      className="search__section--dropdown"
+                      id="basic-button"
+                      aria-controls={open3 ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open3 ? "true" : undefined}
+                      onClick={handleClick3}
+                    >
+                      <CgSortAz size={20} />
+                      <p className="search__section--label">Sort by:</p>{" "}
+                      <span>{sort}</span>
                     </label>
 
-                    <select
-                      name="cars"
-                      id="rating"
-                      value={sort}
-                      onChange={(e) => setSort(e.target.value)}
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl3}
+                      open={open3}
+                      onClose={handleClose3}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                      PaperProps={{
+                        style: {
+                          maxHeight: ITEM_HEIGHT * 4.5,
+                          width: "13ch",
+                          marginTop: ".3ch",
+                          marginRight: "5ch",
+                          right: 0,
+                        },
+                      }}
                     >
-                      <option value="volvo" selected disabled>
-                        Rating
-                      </option>
+                      <select
+                        name="sort"
+                        id="sort"
+                        value={sort}
+                        onChange={(e) => setSort(e.target.value)}
+                      >
+                        <option value="volvo" selected disabled>
+                          Rating
+                        </option>
 
-                      <option value="perHour">Price per hr</option>
-                      <option value="topRated">Top rated</option>
-                    </select>
+                        <option value="perHour">Price per hr</option>
+                        <option value="topRated">Top rated</option>
+                      </select>
+                    </Menu>
                   </div>
                 </div>
               </div>

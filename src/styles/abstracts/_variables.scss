@@ -6,6 +6,7 @@
   --banner-color: #fbfbfc;
   --text-color: rgba(93, 105, 116, 1);
   --color-senary: #edf0f3;
+  --background-shadow: rgba(255, 255, 255, 0.48);
 }
 
 [data-theme="dark"] {
@@ -14,7 +15,7 @@
   --link-color: rgb(10, 14, 15);
   --color-blue: #8077f6;
   --banner-color: #0d1013;
-
+  --background-shadow: rgba(0, 0, 0, 0.72);
   --text-color: rgba(93, 105, 116, 1);
   --color-senary: #121619;
 }
