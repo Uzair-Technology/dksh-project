@@ -25,7 +25,10 @@ const ListCard = ({ item }) => {
         <Grid container>
           <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
             <div className="user__info">
-              <div className="user__image"></div>
+              <div
+                className="user__image"
+                style={{ backgroundImage: `url(/images/${personImage})` }}
+              ></div>
               {verified ? (
                 <img
                   src="/public/images/correct.png"

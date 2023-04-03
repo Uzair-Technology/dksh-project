@@ -31,7 +31,10 @@ const GridCard = ({ item }) => {
           {/* <div className="card__header--image card__header--image-2"></div>
           <div className="card__header--image card__header--image-3"></div> */}
           <div className="user__info">
-            <div className="user__image"></div>
+            <div
+              className="user__image"
+              style={{ backgroundImage: `url(/images/${personImage})` }}
+            ></div>
             <h5 className="user__name">{personName}</h5>
             {verified ? (
               <img
