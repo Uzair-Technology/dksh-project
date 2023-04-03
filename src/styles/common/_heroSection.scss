@@ -6,12 +6,13 @@
   &--right {
     width: 100px;
     height: 100px;
-    margin-bottom: 110px;
+    margin-bottom: 50px;
   }
 
   &--left {
     width: 100px;
     height: 100px;
+    margin-top: 100px;
   }
   &--vectors {
     position: absolute;
@@ -20,7 +21,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: 25.5%;
+    top: 0;
+    background: var(--banner-color);
+    border-radius: 20px;
     img {
       width: 30px;
       height: 30px;
@@ -36,11 +39,12 @@
     align-items: center;
     text-align: center;
     height: 207px;
+    z-index: 111;
 
     /* Background/Light/Septenary */
 
-    background: var(--banner-color);
-    border-radius: 20px;
+    // background: var(--banner-color);
+    // border-radius: 20px;
   }
 
   &--buttons {
