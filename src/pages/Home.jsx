@@ -13,6 +13,7 @@ import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import data from "../assets/data/data.json";
 
 const Buttons = [
   {
@@ -192,9 +193,9 @@ const Home = () => {
       )}
 
       {isActive === 0 ? (
-        <GridSection />
+        <GridSection data={data} />
       ) : isActive === 1 ? (
-        <ListSection />
+        <ListSection data={data} />
       ) : null}
     </div>
   );

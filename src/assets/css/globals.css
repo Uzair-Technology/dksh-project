@@ -171,6 +171,17 @@ a {
   font-weight: 500;
   font-size: 12px;
 }
+.navbar__container--slash {
+  top: 83%;
+  position: absolute;
+  right: 11%;
+}
+.navbar__container--slash svg {
+  font-size: 22px;
+  background-color: var(--color-senary);
+  padding: 1px;
+  border-radius: 4px;
+}
 
 /* Custom Dark Mode Toggle Element */
 .toggle-theme-wrapper {
@@ -340,7 +351,8 @@ input:checked + .slider {
 .user__name {
   font-weight: 600;
   font-size: 14px;
-  margin-top: 60px;
+  margin-top: 80px;
+  text-transform: capitalize;
 }
 
 .user__image {
@@ -358,7 +370,7 @@ input:checked + .slider {
   height: 22px;
   position: absolute;
   top: 40px;
-  left: 62px;
+  left: 60px;
 }
 
 .user__image img {

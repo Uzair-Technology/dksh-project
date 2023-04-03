@@ -121,6 +121,18 @@
       }
     }
   }
+
+  &--slash {
+    top: 83%;
+    position: absolute;
+    right: 11%;
+    svg {
+      font-size: 22px;
+      background-color: var(--color-senary);
+      padding: 1px;
+      border-radius: 4px;
+    }
+  }
 }
 
 /* Custom Dark Mode Toggle Element */

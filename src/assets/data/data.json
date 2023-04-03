@@ -3,7 +3,7 @@
     "id": 1,
     "personName": "ryan jackson",
     "personImage": "male2.png",
-    "skills": ["frontend", "ui", "nft"],
+    "skills": ["frontend", "ui"],
     "projectImages": ["1 8.png", "1 11.png", "1 14.png"],
     "comments": 32,
     "rating": 4.3,
@@ -11,6 +11,24 @@
     "perHour": 30,
     "availability": true,
     "totalHours": 400,
-    "verified": true
+    "verified": true,
+    "talent": true,
+    "description": "UI/UX designer with 5 years of experience. Specializes in creating clean, modern interfaces "
+  },
+  {
+    "id": 2,
+    "personName": "ryan jackson",
+    "personImage": "male2.png",
+    "skills": ["frontend", "ui"],
+    "projectImages": ["1 8.png", "19.png", "1 14.png"],
+    "comments": 32,
+    "rating": 4.3,
+    "topRated": true,
+    "perHour": 30,
+    "availability": true,
+    "totalHours": 400,
+    "verified": false,
+    "talent": true,
+    "description": "UI/UX designer with 5 years of experience. Specializes in creating clean, modern interfaces "
   }
 ]

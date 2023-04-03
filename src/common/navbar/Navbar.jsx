@@ -7,6 +7,7 @@ import { MdNotifications } from "react-icons/md";
 import { BsChatDots } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
+import { CgFormatSlash } from "react-icons/cg";
 
 const setDark = () => {
   localStorage.setItem("theme", "dark");
@@ -53,6 +54,9 @@ const Navbar = () => {
             <div className="navbar__container--search">
               <input placeholder="Search here" />
               <AiOutlineSearch />
+              <div className="navbar__container--slash">
+                <CgFormatSlash />
+              </div>
             </div>
           </Grid>
           <Grid item xs={3} sm={4} md={4} lg={4} xl={4}>
