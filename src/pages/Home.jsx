@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../common/navbar/Navbar";
 import HeroSection from "../common/hero/HeroSection";
 import { useState } from "react";
@@ -13,7 +13,7 @@ import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import data from "../assets/data/data.json";
+import jsonData from "../assets/data/data.json";
 
 const Buttons = [
   {
@@ -30,18 +30,23 @@ const Buttons = [
 
 const Home = () => {
   //*states
+  const [data, setData] = useState(jsonData);
   const [isActive, setIsActive] = useState(0);
   const [toggleButton, setToggleButton] = useState(false);
-  console.log(toggleButton);
-  const [checked1, setChecked1] = React.useState(true);
-  const [checked2, setChecked2] = React.useState(true);
+  const [available, setAvailable] = useState(true);
+  const [talent, setTalent] = useState(true);
+  const [service, setService] = useState("all");
+  const [price, setPrice] = useState("");
+  const [sort, setSort] = useState("");
+
+  console.log(available, talent, service, price, sort);
 
   //* handle change for toggle
-  const handleChange1 = (event) => {
-    setChecked1(event.target.checked);
+  const handleAvailable = (event) => {
+    setAvailable(event.target.checked);
   };
-  const handleChange2 = (event) => {
-    setChecked2(event.target.checked);
+  const handleTalent = (event) => {
+    setTalent(event.target.checked);
   };
 
   //* handle change for price
@@ -53,6 +58,47 @@ const Home = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  //*code for filtration
+  useEffect(() => {
+    const name = "";
+    const lowerCaseValue = name.toLowerCase().trim();
+    const city = "Barcelona";
+    const rating = "3.0356909" * 1;
+    console.log();
+    console.log(name);
+    console.log("i run again");
+    //Filter options updated so apply all filters here
+
+    const result = jsonData
+      //*filter for services
+      .filter((data) => {
+        return service === "all"
+          ? data
+          : service !== "all"
+          ? data.skills.includes(service)
+          : data;
+      })
+
+      //*filter for availability
+      .filter((data) => {
+        return available === true ? data.availability === true : data;
+      })
+      //*filter for talent
+      .filter((data) => {
+        return talent === true ? data.talent === true : data;
+      })
+      //*filter for sorting
+      .filter((data) => {
+        return sort === "topRated"
+          ? data.topRated === true
+          : sort === "perHour"
+          ? data
+          : data;
+      });
+    console.log("Results from new", result);
+    setData(result);
+  }, [price, sort, service, available, talent]);
 
   return (
     <div>
@@ -104,7 +150,7 @@ const Home = () => {
               <div className="search__section--right">
                 <div className="search__section--price">
                   <div className="search__section--dropdown">
-                    <label for="cars">
+                    <label htmlFor="prices">
                       <FaMoneyBillWave /> Price per hr:
                     </label>
                     <button
@@ -137,14 +183,19 @@ const Home = () => {
                       <FaTags /> Services:
                     </label>
 
-                    <select name="cars" id="cars">
+                    <select
+                      name="cars"
+                      id="cars"
+                      value={service}
+                      onChange={(e) => setService(e.target.value)}
+                    >
                       <option value="all" selected>
                         All
                       </option>
-                      <option value="desing">UI Design</option>
-                      <option value="frontend">Frontend</option>
-                      <option value="backend">Backend</option>
-                      <option value="nft">NFt</option>
+                      <option value="UI">UI Design</option>
+                      <option value="Front-end">Frontend</option>
+                      <option value="Backend">Backend</option>
+                      <option value="NFT">Nft</option>
                     </select>
                   </div>
                 </div>
@@ -154,13 +205,18 @@ const Home = () => {
                       <CgSortAz size={20} /> Sort by:
                     </label>
 
-                    <select name="cars" id="rating">
+                    <select
+                      name="cars"
+                      id="rating"
+                      value={sort}
+                      onChange={(e) => setSort(e.target.value)}
+                    >
                       <option value="volvo" selected disabled>
                         Rating
                       </option>
 
-                      <option value="hour">Price per hr</option>
-                      <option value="top-rated">Top rated</option>
+                      <option value="perHour">Price per hr</option>
+                      <option value="topRated">Top rated</option>
                     </select>
                   </div>
                 </div>
@@ -169,16 +225,16 @@ const Home = () => {
                 <div className="search__section--toggles">
                   <div className="search__section--available search__section--toggle">
                     <Switch
-                      checked={checked1}
-                      onChange={handleChange1}
+                      checked={available}
+                      onChange={handleAvailable}
                       inputProps={{ "aria-label": "controlled" }}
                     />
                     <p>Available to work</p>
                   </div>
                   <div className="search__section--tallent search__section--toggle">
                     <Switch
-                      checked={checked2}
-                      onChange={handleChange2}
+                      checked={talent}
+                      onChange={handleTalent}
                       inputProps={{ "aria-label": "controlled" }}
                     />
                     <p>Pro tallent</p>
