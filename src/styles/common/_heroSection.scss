@@ -1,0 +1,41 @@
+.hero__section {
+  &--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 207px;
+
+    /* Background/Light/Septenary */
+
+    background: var(--banner-color);
+    border-radius: 20px;
+  }
+
+  &--buttons {
+    ul {
+      list-style: none;
+      display: flex;
+      li {
+        margin: 0 7px;
+        button {
+          background-color: #fff;
+          color: var(--text-color);
+          width: 62px;
+          height: 38px;
+
+          border-radius: 12px;
+          border: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.hero__section--buttons button.active {
+  background-color: var(--color-blue);
+
+  color: #fff;
+}

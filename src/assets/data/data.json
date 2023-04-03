@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "personName": "ryan jackson",
+    "personImage": "male2.png",
+    "skills": ["frontend", "ui", "nft"],
+    "projectImages": ["1 8.png", "1 11.png", "1 14.png"],
+    "comments": 32,
+    "rating": 4.3,
+    "topRated": true,
+    "perHour": 30,
+    "availability": true,
+    "totalHours": 400,
+    "verified": true
+  }
+]

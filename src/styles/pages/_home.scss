@@ -1,0 +1,143 @@
+.show__talent {
+  &--title {
+    p {
+      font-size: 13px;
+    }
+    h3 {
+      margin-right: 20px;
+    }
+  }
+  &--filter {
+    margin-left: 10px;
+    button {
+      background-color: var(--banner-color);
+
+      color: var(--font-color);
+      width: 50px;
+      height: 47px;
+
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      svg {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &--options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--banner-color);
+    // background-color: yellow;
+    border-radius: 13px;
+
+    height: 50px;
+    ul {
+      list-style: none;
+      display: flex;
+      li {
+        margin: 0 7px;
+        button {
+          background-color: var(--banner-color);
+
+          color: var(--text-color);
+          width: 100px;
+          height: 38px;
+
+          border-radius: 12px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.show__talent--options button.active {
+  background-color: var(--background-color);
+}
+
+.show__talent--filter button.active {
+  background-color: var(--color-blue);
+  color: #fff;
+}
+
+.search__section {
+  &--right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &--toggles {
+    display: flex;
+  }
+
+  &--toggle {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    margin-left: 10px;
+    padding: 1px 13px;
+    border-radius: 12px;
+    border: 1px solid var(--color-senary);
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--font-color);
+    }
+  }
+
+  &--dropdown {
+    margin-right: 10px;
+    border: 1px solid var(--color-senary);
+    padding: 8px 10px;
+    display: flex;
+    border-radius: 12px;
+    button {
+      background-color: transparent;
+      border: none;
+      color: var(--font-color);
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 20px;
+      color: var(--font-color);
+      margin-right: 5px;
+      svg {
+        font-size: 16px;
+        margin-right: 5px;
+        color: var(--font-color);
+      }
+    }
+
+    select {
+      background-color: var(--background-color);
+      border: none;
+      color: var(--font-color);
+
+      option {
+        color: var(--font-color);
+      }
+      :active {
+        border: none;
+      }
+      :focus {
+        border: none;
+      }
+    }
+  }
+}
