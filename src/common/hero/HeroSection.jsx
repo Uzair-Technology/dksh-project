@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 const Buttons = [
   {
@@ -33,6 +33,23 @@ const Buttons = [
 ];
 
 const HeroSection = () => {
+  const [currentTheme, setCurrentTheme] = useState("light");
+  const theme = localStorage.getItem("theme");
+  console.log(theme);
+  // console.log(theme);
+
+  // useEffect(() => {
+  //   const theme = JSON.stringify(localStorage.getItem("theme"));
+  //   if (theme) {
+  //     setCurrentTheme(theme);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   const theme = localStorage.getItem("theme");
+  //   setCurrentTheme(theme);
+  // }, []);
+
   const [isActive, setIsActive] = useState(0);
   console.log(isActive);
   return (
@@ -62,11 +79,19 @@ const HeroSection = () => {
           <div className="hero__section--vectors">
             <div
               className="hero__section--left"
-              style={{ backgroundImage: "url(/images/leftVector.png)" }}
+              style={
+                theme === "dark"
+                  ? { backgroundImage: "url(/images/leftDark.png)" }
+                  : { backgroundImage: "url(/images/leftVector.png)" }
+              }
             ></div>
             <div
               className="hero__section--right"
-              style={{ backgroundImage: "url(/images/rightVector.png)" }}
+              style={
+                theme === "dark"
+                  ? { backgroundImage: "url(/images/rightDark.png)" }
+                  : { backgroundImage: "url(/images/rightVector.png)" }
+              }
             ></div>
           </div>
         </div>
