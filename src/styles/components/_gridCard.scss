@@ -176,6 +176,14 @@
 .card__footer--right {
   display: flex;
   gap: 5px;
+  button {
+    background: transparent;
+    border: none;
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 
 .card__footer--left .comments,
@@ -186,10 +194,7 @@
   font-weight: 500;
   font-size: 12px;
   display: flex;
+  margin-left: 5px;
   align-items: center;
   line-height: 20px;
 }
-
-// .css-pkxl2d-MuiPaper-root-MuiDialog-paper {
-//   max-height: calc(100 / 10px) !important;
-// }

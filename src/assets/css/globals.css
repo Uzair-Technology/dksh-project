@@ -487,6 +487,14 @@ input:checked + .slider {
   display: flex;
   gap: 5px;
 }
+.card__footer--right button {
+  background: transparent;
+  border: none;
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 .card__footer--left .comments,
 .card__footer--right .rating__text {
@@ -495,6 +503,7 @@ input:checked + .slider {
   font-weight: 500;
   font-size: 12px;
   display: flex;
+  margin-left: 5px;
   align-items: center;
   line-height: 20px;
 }
@@ -665,6 +674,7 @@ input:checked + .slider {
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
+  margin-left: 5px;
   line-height: 20px;
 }
 
@@ -761,7 +771,7 @@ input:checked + .slider {
 }
 
 .modal__section .user {
-  margin: 12px 0 12px 20px;
+  margin: 12px 0 12px 30px;
 }
 
 .modal__section .user__image {
