@@ -987,6 +987,44 @@ input:checked + .slider {
   color: #fff;
 }
 
+.search__section--slider {
+  padding: 10px;
+}
+.search__section--slider p {
+  margin-top: 0;
+}
+.search__section--range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("/public/images/wave.png");
+  object-fit: contain;
+  object-position: top;
+  height: 50px;
+  margin-top: 20px;
+  background-repeat: no-repeat;
+}
+.search__section--input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.search__section--input label {
+  font-size: 12px;
+  color: black;
+  margin-left: 4px;
+  font-weight: 600;
+}
+.search__section--input input {
+  width: 130px;
+  height: 35px;
+  padding: 2px 5px 2px 10px;
+  border-radius: 12px;
+  border: 1px solid gray;
+  color: black;
+}
 .search__section--right {
   display: flex;
   justify-content: flex-start;
@@ -994,6 +1032,27 @@ input:checked + .slider {
 }
 .search__section--toggles {
   display: flex;
+}
+.search__section--buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.search__section--buttons button {
+  width: 145px;
+  height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.search__section--cancel button {
+  border: 1px solid #edf0f3;
+  background-color: transparent;
+}
+.search__section--apply button {
+  background-color: var(--color-blue);
+  color: #fff;
+  border: none;
 }
 .search__section--toggle {
   display: flex;
@@ -1013,6 +1072,14 @@ input:checked + .slider {
   margin: 0 !important;
   padding: 0 8px;
   font-size: 12px;
+}
+.search__section--prices {
+  width: 100%;
+  margin-top: -15px;
+}
+.search__section--prices span {
+  font-size: 13px;
+  font-weight: 600;
 }
 .search__section--dropdown {
   margin-right: 10px;
@@ -1078,6 +1145,12 @@ select#sort {
 
 select#sort:focus {
   outline: none;
+}
+
+.css-lmso92 {
+  padding: 0 !important;
+  height: 0 !important;
+  color: black !important;
 }
 
 /*# sourceMappingURL=globals.css.map */
