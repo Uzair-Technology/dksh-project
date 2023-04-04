@@ -668,6 +668,254 @@ input:checked + .slider {
   line-height: 20px;
 }
 
+.navbar__container--menu {
+  position: absolute;
+  border-radius: 7px;
+  background-color: var(--background-color);
+  box-shadow: 0px 32px 72px -8px rgba(91, 95, 99, 0.16);
+  left: 0;
+  right: 0;
+  top: 20px;
+  margin: 18px 18px 0 18px;
+  z-index: 1111;
+  padding: 10px 10px 0px 10px;
+}
+.navbar__container--menu ul img {
+  font-size: 15px;
+}
+.navbar__container--menu ul li {
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list__section--name {
+  margin-left: 10px;
+  font-size: 13px;
+}
+.list__section--info {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  justify-content: space-between;
+}
+.list__section--info img {
+  margin-right: 5px;
+}
+.list__section--comments svg {
+  color: black;
+  position: relative;
+  font-size: 18px;
+  margin-top: 5px;
+}
+.list__section--talent span {
+  margin-left: 5px;
+}
+.list__section--talent a {
+  font-size: 13px;
+}
+
+.modal__section .modal {
+  width: 348px;
+  height: 667px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background: #fff;
+  border-radius: 11px;
+  border: 1px solid #5d6974;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.modal__section .card__body {
+  margin-top: 10px;
+}
+
+.modal__section .modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 335px;
+  height: 32px;
+  margin: 8px auto 0 auto;
+}
+
+.modal__section .modal__header--text {
+  color: #090b0c;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal__section .modal__header--icon button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__section .divider {
+  width: 310px;
+  height: 1px;
+  background-color: #fbfbfc;
+}
+
+.modal__section .user {
+  margin: 12px 0 12px 20px;
+}
+
+.modal__section .user__image {
+  width: 0px;
+  height: 53px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.modal__section .user__image--user {
+  border-radius: 50%;
+  background-color: #edf0f3;
+  height: 51px;
+  width: 51px;
+}
+
+.modal__section .user__active--icon {
+  width: 19px;
+  height: 18px;
+  position: absolute;
+  top: 36px;
+  left: 32px;
+}
+
+.modal__section .user__name {
+  font-size: 14px;
+  line-height: 1px;
+  font-weight: 700;
+  color: #090b0c;
+  margin: 7px 0 15px 0;
+}
+
+.modal__section .user__rating span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #090b0c;
+}
+
+.modal__section .user__rating {
+  font-size: 11px;
+  font-weight: 700;
+  color: #878f9a;
+}
+
+.modal__section .comments {
+  width: 123px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #090b0c;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.modal__section .comment__text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal__section .comment__number {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.modal__section .card {
+  width: 315px;
+  height: auto;
+  border-radius: 20px;
+  margin: 0 auto;
+  border: 1px solid #edf0f3;
+  padding: 16px;
+  margin-bottom: 15px;
+}
+
+.modal__section .card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__section .card__header--left {
+  display: flex;
+  gap: 12px;
+}
+
+.modal__section .card__header--left--rating span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #090b0c;
+}
+
+.modal__section .card__header--left--rating {
+  font-size: 11px;
+  font-weight: 700;
+  color: #878f9a;
+}
+
+.modal__section .card__heading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0 0.01em;
+  color: #090b0c;
+  margin-top: 4px;
+  margin-bottom: 1px;
+}
+
+.modal__section .card__header--left--icon img {
+  width: 13px;
+  height: 13px;
+}
+
+.modal__section .card__description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #5d6974;
+  text-align: justify;
+}
+
+.modal__section .card__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  margin-top: 10px;
+}
+
+.modal__section .card__footer--icon {
+  width: 13 0.67px;
+  height: 15 0.33px;
+  color: #090b0c;
+}
+
+.modal__section .date {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal__section .modal::-webkit-scrollbar {
+  display: none;
+}
+
+#modal__card {
+  overflow-y: scroll;
+}
+
+#modal__card::-webkit-scrollbar {
+  display: none;
+}
+
 .show__talent--title p {
   font-size: 13px;
 }
