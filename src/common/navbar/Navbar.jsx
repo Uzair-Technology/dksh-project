@@ -8,6 +8,8 @@ import { BsChatDots } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 import { CgFormatSlash } from "react-icons/cg";
+import List from "../../components/list/List";
+import jsonData from "../../assets/data/data.json";
 
 const setDark = () => {
   localStorage.setItem("theme", "dark");
@@ -41,6 +43,49 @@ const toggleTheme = (e) => {
 };
 
 const Navbar = () => {
+  const [inputText, setInputText] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
+
+  let inputHandler = (e) => {
+    setInputText(e.target.value);
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    //create a new array by filtering the original array
+    const filteredData = jsonData.filter((el) => {
+      //if no input the return the original
+      if (e.target.value === "") {
+        return el;
+      }
+      //return the item which contains the user input
+      else {
+        return el.personName.toLowerCase().includes(lowerCase);
+      }
+    });
+
+    if (e.target.value === "") {
+      return setFilteredList(jsonData.slice(0, 3));
+    }
+    setFilteredList(filteredData);
+  };
+
+  //** closing the search menu
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      console.log("clicked");
+      console.log(e.target);
+      if (e.target.tagName !== "INPUT") {
+        setShowMenu(false);
+      }
+    };
+
+    document.body.addEventListener("click", closeDropdown);
+
+    return () => {
+      document.body.removeEventListener("click", closeDropdown);
+    };
+  }, []);
+
   return (
     <div className="navbar__container">
       <div className="navbar__container--list">
@@ -52,11 +97,27 @@ const Navbar = () => {
           </Grid>
           <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
             <div className="navbar__container--search">
-              <input placeholder="Search here" />
+              <input
+                placeholder="Search here"
+                value={inputText}
+                onChange={inputHandler}
+                onClick={() => setShowMenu(!showMenu)}
+              />
               <AiOutlineSearch />
               <div className="navbar__container--slash">
                 <CgFormatSlash />
               </div>
+              {showMenu ? (
+                <div className="navbar__container--menu">
+                  {filteredList.length === 0 ? (
+                    <List item={jsonData.slice(0, 3)} />
+                  ) : (
+                    <List item={filteredList} />
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </Grid>
           <Grid item xs={3} sm={4} md={4} lg={4} xl={4}>
