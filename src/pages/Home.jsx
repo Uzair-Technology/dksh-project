@@ -151,20 +151,20 @@ const Home = () => {
   const [data, setData] = useState(jsonData);
   const [isActive, setIsActive] = useState(0);
   const [toggleButton, setToggleButton] = useState(false);
-  const [available, setAvailable] = useState(true);
-  const [talent, setTalent] = useState(true);
+  const [available, setAvailable] = useState(false);
+  const [talent, setTalent] = useState(false);
   const [service, setService] = useState("all");
   const [price, setPrice] = useState("");
   const [sort, setSort] = useState("");
 
-  const [value, setValue] = React.useState([300, 700]);
+  const [value, setValue] = useState([300, 700]);
   console.log(value);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  console.log(available, talent, service, price, sort);
+  console.log(value);
 
   //* handle change for toggle
   const handleAvailable = (event) => {
@@ -204,6 +204,22 @@ const Home = () => {
     setAnchorEl3(null);
   };
 
+  //* filter by price
+  const handleFilterPrice = () => {
+    const documents = jsonData.filter((data) => {
+      const documentPrice = parseFloat(data.perHour);
+      if (isNaN(documentPrice)) {
+        return false;
+      }
+      return (
+        documentPrice >= parseFloat(value?.[0]) &&
+        documentPrice <= parseFloat(value?.[1])
+      );
+    });
+    console.log("filter by price", documents);
+    setData(documents);
+  };
+
   //*code for filtration
   useEffect(() => {
     const result = jsonData
@@ -232,6 +248,7 @@ const Home = () => {
           ? data
           : data;
       });
+
     console.log("Results from new", result);
     setData(result);
   }, [price, sort, service, available, talent]);
@@ -296,7 +313,7 @@ const Home = () => {
                       aria-expanded={open1 ? "true" : undefined}
                       onClick={handleClick1}
                     >
-                      <FaMoneyBillWave /> Price per hr:
+                      <FaMoneyBillWave /> Price per hr: ${value?.[0]}
                     </label>
                     <Menu
                       id="basic-menu"
@@ -329,17 +346,29 @@ const Home = () => {
                           />
                         </div>
                         <div className="search__section--prices flex-between">
-                          <span>0$</span>
-                          <span>1000$</span>
+                          <span>{value?.[0]}$</span>
+                          <span>{value?.[1]}$</span>
                         </div>
                         <div className="search__section--input">
                           <div className="search__section--from">
                             <label htmlFor="from">From</label>
-                            <input type="text" placeholder="100$" />
+                            <input
+                              type="text"
+                              disabled
+                              placeholder={`${value?.[0]}$`}
+                              value={value?.[0]}
+                              onChange={handleChange}
+                            />
                           </div>
                           <div className="search__section--to">
                             <label htmlFor="from">To</label>
-                            <input type="text" placeholder="800$" />
+                            <input
+                              type="text"
+                              disabled
+                              placeholder={`${value?.[1]}$`}
+                              value={value?.[1]}
+                              onChange={handleChange}
+                            />
                           </div>
                         </div>
                         <div className="search__section--buttons">
@@ -347,7 +376,7 @@ const Home = () => {
                             <button onClick={handleClose1}>Cancel</button>
                           </div>
                           <div className="search__section--apply">
-                            <button>Apply</button>
+                            <button onClick={handleFilterPrice}>Apply</button>
                           </div>
                         </div>
                       </div>
@@ -355,10 +384,9 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="search__section--services">
-                  <div>
+                  <div className="search__section--dropdown">
                     <label
                       for="services"
-                      className="search__section--dropdown"
                       id="basic-button"
                       aria-controls={open2 ? "basic-menu" : undefined}
                       aria-haspopup="true"
@@ -405,10 +433,9 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="search__section--rate">
-                  <div className="search__section--dropdow">
+                  <div className="search__section--dropdown">
                     <label
                       for="sort"
-                      className="search__section--dropdown"
                       id="basic-button"
                       aria-controls={open3 ? "basic-menu" : undefined}
                       aria-haspopup="true"
@@ -417,7 +444,7 @@ const Home = () => {
                     >
                       <CgSortAz size={20} />
                       <p className="search__section--label">Sort by:</p>{" "}
-                      <span>{sort}</span>
+                      <span>Rating</span>
                     </label>
 
                     <Menu

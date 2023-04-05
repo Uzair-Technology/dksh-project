@@ -72,7 +72,7 @@ const Navbar = () => {
   //** closing the search menu
   useEffect(() => {
     const closeDropdown = (e) => {
-      console.log(e);
+      // console.log(e);
       if (e.target.tagName !== "INPUT") {
         setShowMenu(false);
       }

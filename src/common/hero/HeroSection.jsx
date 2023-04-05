@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
+import { getFromLocalStorage } from "../../hooks/hooks";
 
 const Buttons = [
   {
@@ -33,25 +34,25 @@ const Buttons = [
 ];
 
 const HeroSection = () => {
-  const [currentTheme, setCurrentTheme] = useState("light");
-  const theme = localStorage.getItem("theme");
-  console.log(theme);
-  // console.log(theme);
-
-  // useEffect(() => {
-  //   const theme = JSON.stringify(localStorage.getItem("theme"));
-  //   if (theme) {
-  //     setCurrentTheme(theme);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   const theme = localStorage.getItem("theme");
-  //   setCurrentTheme(theme);
-  // }, []);
-
+  //* states
   const [isActive, setIsActive] = useState(0);
-  console.log(isActive);
+  const [currentTheme, setCurrentTheme] = useState(
+    localStorage.getItem("theme")
+  );
+  console.log(currentTheme);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      console.log("I call");
+      setCurrentTheme(localStorage.getItem("theme"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
   return (
     <div className="hero__section">
       <div className="container">
@@ -80,7 +81,7 @@ const HeroSection = () => {
             <div
               className="hero__section--left"
               style={
-                theme === "dark"
+                currentTheme === "dark"
                   ? { backgroundImage: "url(/images/leftDark.png)" }
                   : { backgroundImage: "url(/images/leftVector.png)" }
               }
@@ -88,7 +89,7 @@ const HeroSection = () => {
             <div
               className="hero__section--right"
               style={
-                theme === "dark"
+                currentTheme === "dark"
                   ? { backgroundImage: "url(/images/rightDark.png)" }
                   : { backgroundImage: "url(/images/rightVector.png)" }
               }
