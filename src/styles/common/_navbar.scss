@@ -1,9 +1,33 @@
 .navbar__container {
   padding: 1rem 2rem;
 
+  &--info1 {
+    position: relative;
+    ul li {
+      position: relative;
+    }
+  }
+
   &--list {
     display: flex;
     align-items: flex-end;
+  }
+
+  &--online {
+    background-color: var(--background-color);
+    height: 9px;
+    padding: 2px;
+    width: 9px;
+    position: absolute;
+    top: -13%;
+    right: 15%;
+    border-radius: 50%;
+    div {
+      background-color: var(--color-blue);
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+    }
   }
   &--search {
     display: flex;
@@ -22,7 +46,7 @@
       position: relative;
       width: 100%;
       border: none;
-
+      color: var(--font-color);
       display: flex;
       flex-direction: row;
       justify-content: space-between;

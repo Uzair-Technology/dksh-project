@@ -1,7 +1,7 @@
 import { Avatar, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { BiHomeCircle } from "react-icons/bi";
+import { BiHomeCircle, BiShoppingBag } from "react-icons/bi";
 import { IoPeopleOutline } from "react-icons/io5";
 import { MdNotifications, MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BsChatDots } from "react-icons/bs";
@@ -48,7 +48,24 @@ const Navbar = () => {
   const [inputText, setInputText] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState(
+    localStorage.getItem("theme")
+  );
 
+  //** for detecting the theme
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setCurrentTheme(localStorage.getItem("theme"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  //* Search filter input handler
   let inputHandler = (e) => {
     setInputText(e.target.value);
     //convert input text to lower case
@@ -93,7 +110,11 @@ const Navbar = () => {
         <Grid container justifyContent="space-between">
           <Grid item xs={1.6} sm={1.6} md={1.6} lg={1.6} xl={1.6}>
             <div className="navbar__container--icon">
-              <img src={`/images/Logo.svg`} alt="" />
+              {currentTheme === "dark" ? (
+                <img src={`/images/logoDark.png`} alt="" />
+              ) : (
+                <img src={`/images/Logo.svg`} alt="" />
+              )}
             </div>
           </Grid>
           <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
@@ -134,7 +155,7 @@ const Navbar = () => {
                     <Link hrefLang="/">Network</Link>
                   </li>
                   <li>
-                    <BiHomeCircle />
+                    <BiShoppingBag />
                     <Link hrefLang="/"> Jobs</Link>
                   </li>
                 </ul>
@@ -160,12 +181,18 @@ const Navbar = () => {
                     <Link hrefLang="/">
                       {" "}
                       <BsChatDots />
+                      <div className="navbar__container--online">
+                        <div></div>
+                      </div>
                     </Link>
                   </li>
                   <li>
                     <Link hrefLang="/">
                       {" "}
-                      <MdNotifications />
+                      <MdNotifications size={23} />
+                      <div className="navbar__container--online">
+                        <div></div>
+                      </div>
                     </Link>
                   </li>
                   <li style={{ marginTop: "-10px" }}>

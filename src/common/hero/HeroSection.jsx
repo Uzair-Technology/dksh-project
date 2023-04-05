@@ -42,7 +42,6 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleStorageChange = () => {
-      console.log("I call");
       setCurrentTheme(localStorage.getItem("theme"));
     };
 

@@ -69,9 +69,31 @@ a {
 .navbar__container {
   padding: 1rem 2rem;
 }
+.navbar__container--info1 {
+  position: relative;
+}
+.navbar__container--info1 ul li {
+  position: relative;
+}
 .navbar__container--list {
   display: flex;
   align-items: flex-end;
+}
+.navbar__container--online {
+  background-color: var(--background-color);
+  height: 9px;
+  padding: 2px;
+  width: 9px;
+  position: absolute;
+  top: -13%;
+  right: 15%;
+  border-radius: 50%;
+}
+.navbar__container--online div {
+  background-color: var(--color-blue);
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
 }
 .navbar__container--search {
   display: flex;
@@ -89,6 +111,7 @@ a {
   position: relative;
   width: 100%;
   border: none;
+  color: var(--font-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -719,12 +742,46 @@ input:checked + .slider {
   position: relative;
   font-size: 18px;
   margin-top: 5px;
+  color: var(--font-color);
 }
 .list__section--talent span {
   margin-left: 5px;
 }
 .list__section--talent a {
   font-size: 13px;
+}
+.list__section--footer {
+  position: relative;
+  border-top: 1px solid var(--background-color);
+  background-color: var(--banner-color);
+  padding: 0 5px 0 5px;
+}
+.list__section--box {
+  display: inline-block;
+  display: flex;
+  margin-right: 20px;
+}
+.list__section--box span {
+  font-size: 13px;
+  margin-top: 4px;
+}
+.list__section--box svg {
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-right: 0;
+  font-size: 20px;
+  background-color: var(--color-senary);
+  padding: 2px;
+  border-radius: 6px;
+  margin-right: 5px;
+}
+.list__section--menus {
+  padding-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .modal__section .modal {
@@ -1106,7 +1163,7 @@ input:checked + .slider {
   justify-content: center;
   text-align: center;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 12px;
   line-height: 20px;
   color: var(--font-color);

@@ -1,7 +1,9 @@
 import { Avatar } from "@mui/material";
 import React from "react";
+import { BsArrowReturnLeft } from "react-icons/bs";
 import { GoComment } from "react-icons/go";
 import { IoPeopleOutline } from "react-icons/io5";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const List = ({ item }) => {
   console.log(item);
@@ -82,7 +84,32 @@ const List = ({ item }) => {
               </li>
             ))}
           </ul>
-          <img src="/images/menu.png" alt="" style={{ width: "100%" }} />
+          <div className="list__section--footer">
+            <div className="list__section--menus">
+              <div className="list__section--box">
+                <div className="list__section--icon">
+                  <MdKeyboardArrowUp />
+                </div>
+
+                <div className="list__section--icon">
+                  <MdKeyboardArrowDown />
+                </div>
+                <span>To Navigate</span>
+              </div>
+              <div className="list__section--box">
+                <div className="list__section--icon">
+                  <BsArrowReturnLeft />
+                </div>
+                <span>To Select</span>
+              </div>
+              <div className="list__section--box">
+                <div className="list__section--icon">
+                  <BsArrowReturnLeft />
+                </div>
+                <span>To Dismiss</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
