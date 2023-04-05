@@ -39,7 +39,6 @@ const HeroSection = () => {
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem("theme")
   );
-  console.log(currentTheme);
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -53,6 +52,7 @@ const HeroSection = () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+
   return (
     <div className="hero__section">
       <div className="container">

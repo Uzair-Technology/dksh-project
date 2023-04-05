@@ -156,15 +156,12 @@ const Home = () => {
   const [service, setService] = useState("all");
   const [price, setPrice] = useState("");
   const [sort, setSort] = useState("");
-
   const [value, setValue] = useState([300, 700]);
-  console.log(value);
 
+  //** handle change for range price
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  console.log(value);
 
   //* handle change for toggle
   const handleAvailable = (event) => {

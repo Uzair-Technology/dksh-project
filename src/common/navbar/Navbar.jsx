@@ -14,11 +14,13 @@ import jsonData from "../../assets/data/data.json";
 const setDark = () => {
   localStorage.setItem("theme", "dark");
   document.documentElement.setAttribute("data-theme", "dark");
+  window.dispatchEvent(new Event("storage"));
 };
 
 const setLight = () => {
   localStorage.setItem("theme", "light");
   document.documentElement.setAttribute("data-theme", "light");
+  window.dispatchEvent(new Event("storage"));
 };
 
 const storedTheme = localStorage.getItem("theme");
