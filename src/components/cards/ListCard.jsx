@@ -46,7 +46,7 @@ const ListCard = ({ item }) => {
               ></div>
               {verified ? (
                 <img
-                  src="/public/images/correct.png"
+                  src={`/images/correct.png`}
                   alt="icon"
                   className="user__icon"
                 />

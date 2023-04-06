@@ -55,7 +55,7 @@ const GridCard = ({ item }) => {
             <h5 className="user__name">{personName}</h5>
             {verified ? (
               <img
-                src="/public/images/correct.png"
+                src={`/images/correct.png`}
                 alt="icon"
                 className="user__icon"
               />
