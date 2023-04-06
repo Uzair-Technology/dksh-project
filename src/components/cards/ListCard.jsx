@@ -117,11 +117,11 @@ const ListCard = ({ item }) => {
         onClose={handleClose}
         PaperProps={{
           sx: {
-            width: "40%",
-            marginLeft: "70%",
+            marginLeft: "75%",
             height: "100%",
-            maxHeight: "600px",
-            marginRight: "10px",
+            maxHeight: "90vh",
+            // marginRight: "10px",
+            padding: "15px"
           },
         }}
         aria-describedby="alert-dialog-slide-description"

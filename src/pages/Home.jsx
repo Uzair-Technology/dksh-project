@@ -323,9 +323,9 @@ const Home = () => {
                       PaperProps={{
                         style: {
                           maxHeight: ITEM_HEIGHT * 50,
-                          width: "30ch",
-                          marginTop: "1ch",
-                          marginLeft: "-.7ch",
+                          width: "20%",
+                          marginTop: "1%",
+                          marginLeft: "-.7%",
                         },
                       }}
                     >

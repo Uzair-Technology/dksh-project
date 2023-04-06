@@ -36,7 +36,7 @@ const GridCard = ({ item }) => {
     description,
   } = item;
   return (
-    <div className="card">
+    <div className="card p-8">
       <div className="card__header">
         <div className="card__header--images">
           {projectImages.map((item, i) => (
@@ -104,11 +104,12 @@ const GridCard = ({ item }) => {
         onClose={handleClose}
         PaperProps={{
           sx: {
-            width: "40%",
-            marginLeft: "70%",
+            // width: "40vw",
+            marginLeft: "75%",
             height: "100%",
-            maxHeight: "600px",
-            marginRight: "10px",
+            maxHeight: "90vh",
+            // marginRight: "10px",
+            padding: "15px"
           },
         }}
         aria-describedby="alert-dialog-slide-description"
