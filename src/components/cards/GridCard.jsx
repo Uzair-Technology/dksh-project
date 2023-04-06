@@ -104,9 +104,9 @@ const GridCard = ({ item }) => {
         onClose={handleClose}
         PaperProps={{
           sx: {
-            // width: "40vw",
+            width: "40ch",
+            minWidth: "40ch",
             marginLeft: "75%",
-            height: "100%",
             maxHeight: "90vh",
             // marginRight: "10px",
             padding: "15px"
