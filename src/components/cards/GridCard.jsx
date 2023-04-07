@@ -36,7 +36,7 @@ const GridCard = ({ item }) => {
     description,
   } = item;
   return (
-    <div className="card">
+    <div className="card p-8">
       <div className="card__header">
         <div className="card__header--images">
           {projectImages.map((item, i) => (
@@ -55,7 +55,7 @@ const GridCard = ({ item }) => {
             <h5 className="user__name">{personName}</h5>
             {verified ? (
               <img
-                src="/public/images/correct.png"
+                src={`/images/correct.png`}
                 alt="icon"
                 className="user__icon"
               />

@@ -46,7 +46,7 @@ const ListCard = ({ item }) => {
               ></div>
               {verified ? (
                 <img
-                  src="/public/images/correct.png"
+                  src={`/images/correct.png`}
                   alt="icon"
                   className="user__icon"
                 />
@@ -115,15 +115,16 @@ const ListCard = ({ item }) => {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        PaperProps={{
-          sx: {
-            width: "40%",
-            marginLeft: "70%",
-            height: "100%",
-            maxHeight: "600px",
-            marginRight: "10px",
-          },
-        }}
+        // PaperProps={{
+        //   sx: {
+        //     width: "40ch",
+        //     minWidth: "40ch",
+        //     marginLeft: "75%",
+        //     maxHeight: "90vh",
+        //     // marginRight: "10px",
+        //     padding: "15px"
+        //   },
+        // }}
         aria-describedby="alert-dialog-slide-description"
       >
         <div className="modal__section modal" id="modal__card">
