@@ -984,16 +984,6 @@ input:checked + .slider {
   display: none;
 }
 
-.css-zw3mfo-MuiModal-root-MuiDialog-root {
-  position: fixed;
-  z-index: 1300;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  /* right: 0; */
-  left: none;
-}
-
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.87);
@@ -1002,7 +992,7 @@ input:checked + .slider {
   border-radius: 4px;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   margin: 32px;
-  position: absolute !important;
+  position: absolute;
   overflow-y: auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1012,8 +1002,24 @@ input:checked + .slider {
   -ms-flex-direction: column;
   flex-direction: column;
   max-height: calc(100% - 64px);
-  /* max-width: 600px; */
-  right: 0%;
+  max-width: 0px;
+  right: 0;
+}
+
+.css-uhb5lp {
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
+  margin: 32px;
+  position: absolute;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100% - 64px);
+  max-width: 0px;
+  right: 0;
 }
 
 .show__talent--title p {
@@ -1108,7 +1114,7 @@ input:checked + .slider {
   font-weight: 600;
 }
 .search__section--input input {
-  width: 13ch;
+  width: 130px;
   height: 35px;
   padding: 2px 5px 2px 10px;
   border-radius: 12px;
@@ -1134,7 +1140,7 @@ input:checked + .slider {
   margin-top: 15px;
 }
 .search__section--buttons button {
-  width: 15ch;
+  width: 145px;
   height: 44px;
   border-radius: 12px;
   cursor: pointer;
