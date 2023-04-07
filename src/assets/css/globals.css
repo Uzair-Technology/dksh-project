@@ -902,7 +902,7 @@ input:checked + .slider {
   margin: 0 auto;
   border: 1px solid #edf0f3;
   padding: 16px;
-  margin-bottom: 15px;
+  margin: 0 13px 15px 13px;
 }
 
 .modal__section .card__header {
@@ -982,6 +982,38 @@ input:checked + .slider {
 
 #modal__card::-webkit-scrollbar {
   display: none;
+}
+
+.css-zw3mfo-MuiModal-root-MuiDialog-root {
+  position: fixed;
+  z-index: 1300;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  /* right: 0; */
+  left: none;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  margin: 32px;
+  position: absolute !important;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-height: calc(100% - 64px);
+  /* max-width: 600px; */
+  right: 0%;
 }
 
 .show__talent--title p {
@@ -1065,7 +1097,7 @@ input:checked + .slider {
 }
 .search__section--input {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-top: 10px;
 }
@@ -1082,6 +1114,10 @@ input:checked + .slider {
   border-radius: 12px;
   border: 1px solid gray;
   color: black;
+}
+.search__section--input div {
+  display: flex;
+  flex-direction: column;
 }
 .search__section--right {
   display: flex;
@@ -1212,6 +1248,25 @@ select#sort:focus {
   padding: 0 !important;
   height: 0 !important;
   color: black !important;
+}
+
+.css-ne27ck {
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
+  margin: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 0;
+  width: 0ch;
+  min-width: 0ch;
+  position: absolute;
+  max-height: 85vh;
+  padding: 15px;
+  right: 2%;
 }
 
 /*# sourceMappingURL=globals.css.map */
