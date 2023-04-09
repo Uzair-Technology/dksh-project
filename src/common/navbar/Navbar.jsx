@@ -290,7 +290,7 @@ const Navbar = () => {
             </div>
           </Grid>
 
-          <Grid item xs={0} sm={4} md={4} lg={4} xl={4}>
+          <Grid item xs={0} sm={5} md={4} lg={4} xl={4}>
             <div className="navbar__container--options">
               <div className="navbar__container--links">
                 <ul>
