@@ -89,8 +89,73 @@ a {
   text-decoration: none;
 }
 
+aside {
+  background-color: var(--background-color);
+  height: 100vh;
+  position: fixed;
+  /* bottom: 0; */
+  top: 0;
+  left: 0;
+  z-index: 1111;
+}
+
+.hamburger__container .navbar__container--info1 ul li {
+  margin: 4px 0;
+}
+
+.hamburger__container .toggle-theme-wrapper {
+  margin-left: 0px;
+  margin-bottom: 0.4rem;
+}
+
+.hamburger__container {
+  text-align: start;
+  /* bottom: 0; */
+  margin: 5rem 3rem;
+  position: absolute;
+}
+.hamburger__container ul {
+  display: flex;
+  flex-direction: column;
+}
+.hamburger__container ul li {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.4rem;
+}
+.hamburger__container ul li a {
+  color: var(--font-color);
+}
+
 .navbar__container {
   padding: 1rem 2rem;
+}
+.navbar__container--hamburger {
+  display: none;
+  text-align: end;
+  padding-right: 20px;
+  display: none;
+}
+.navbar__container--hamburger button {
+  position: fixed;
+  cursor: pointer;
+  margin: 1.25rem;
+  border: none;
+  padding: 0.5rem 0.3rem;
+  top: 0;
+  right: 0;
+  background: transparent;
+  z-index: 1111;
+}
+.navbar__container--hamburger button svg {
+  color: var(--font-color);
+}
+@media (max-width: 37.5em) {
+  .navbar__container--hamburger {
+    display: inline;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 .navbar__container--info1 {
   position: relative;
@@ -184,6 +249,11 @@ a {
   outline: none;
   margin: 0 15px;
 }
+@media (max-width: 60em) {
+  .navbar__container--options ul li {
+    margin: 0 8px;
+  }
+}
 .navbar__container--options ul li svg {
   margin-right: 4px;
   font-size: 20px;
@@ -218,6 +288,11 @@ a {
   align-items: center;
   outline: none;
   margin: 0 10px;
+}
+@media (max-width: 60em) {
+  .navbar__container--info ul li {
+    margin: 0 8px;
+  }
 }
 .navbar__container--info ul li span {
   margin-right: 5px;
