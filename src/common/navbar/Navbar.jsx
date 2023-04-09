@@ -149,7 +149,7 @@ const Navbar = () => {
               )}
             </div>
           </Grid>
-          <Grid item xs={0} sm={8} md={4} lg={4} xl={4}>
+          <Grid item xs={0} sm={8} md={2} lg={4} xl={4}>
             <div className="navbar__container--search">
               <input
                 placeholder="Search here"
@@ -176,7 +176,7 @@ const Navbar = () => {
           </Grid>
 
           {/* animated hamburger */}
-          <Grid item xs={7} sm={7} md={4} lg={4} xl={4}>
+          <Grid item xs={0} sm={0} md={0} lg={0} xl={0}>
             <div>
               <div className="navbar__container--hamburger">
                 <AnimatePresence>
@@ -269,41 +269,10 @@ const Navbar = () => {
                               </div>
                             </div>
 
-                            {/* <Link href="/">
-                                <a href="">
-                                  <SearchOutlined />
-                                </a>
-                              </Link> */}
-
-                            {/* {useAuth.isUserAuthenticated() ? (
-                              <motion.li
-                                whileHover={{ scale: 1.1 }}
-                                variants={itemVariants}
-                                className="cart__logo"
-                              >
-                                <Link href="/cart">
-                                  <a href="">
-                                    <MdShoppingCart />
-                                  </a>
-                                </Link>
-                                <span className="total__items">
-                                  {cartTotalQuantity}
-                                </span>
-                              </motion.li>
-                            ) : (
-                              ''
-                            )} */}
-
                             <motion.li
                               whileHover={{ scale: 1.1 }}
                               variants={itemVariants}
-                            >
-                              {/* <Link href="/login">
-                                <a href="">
-                                  <BsFillPersonFill />
-                                </a>
-                              </Link> */}
-                            </motion.li>
+                            ></motion.li>
                           </ul>
                         </div>
                       </motion.div>
@@ -321,7 +290,7 @@ const Navbar = () => {
             </div>
           </Grid>
 
-          <Grid item xs={0} sm={0} md={4} lg={4} xl={4}>
+          <Grid item xs={0} sm={4} md={4} lg={4} xl={4}>
             <div className="navbar__container--options">
               <div className="navbar__container--links">
                 <ul>
@@ -352,7 +321,7 @@ const Navbar = () => {
               </div>
             </div>
           </Grid>
-          <Grid item xs={0} sm={0} md={2.3} lg={2.3} xl={2.3}>
+          <Grid item xs={0} sm={2.3} md={2.3} lg={2.3} xl={2.3}>
             <div className="navbar__container--info">
               <div className="navbar__container--info1">
                 <ul>
