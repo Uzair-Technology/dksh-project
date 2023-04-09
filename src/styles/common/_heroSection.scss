@@ -40,7 +40,9 @@
     text-align: center;
     height: 207px;
     z-index: 111;
-
+    @include respond(phone) {
+      height: 280px;
+    }
     /* Background/Light/Septenary */
 
     // background: var(--banner-color);
@@ -48,11 +50,21 @@
   }
 
   &--buttons {
+    @include respond(phone) {
+      width: 300px;
+    }
     ul {
       list-style: none;
       display: flex;
+      @include respond(phone) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
       li {
         margin: 0 7px;
+        @include respond(phone) {
+          margin-bottom: 0.8rem;
+        }
         button {
           background-color: #fff;
           color: var(--text-color);

@@ -1,11 +1,11 @@
 .container {
   padding: 1rem 2rem;
-  // @include respond(tab-port) {
-  //   padding: 4rem;
-  // }
-  // @include respond(phone) {
-  //   padding: 3rem 2rem;
-  // }
+  @include respond(tab-port) {
+    padding: 1rem;
+  }
+  @include respond(phone) {
+    padding: 1rem 0.3rem;
+  }
 }
 
 .simple-flex {

@@ -5,6 +5,10 @@
     }
     h3 {
       margin-right: 20px;
+      @include respond(phone) {
+        margin-right: 5px;
+        font-size: 0.9rem;
+      }
     }
   }
   &--filter {
@@ -52,6 +56,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          @include respond(phone) {
+            width: auto;
+          }
           svg {
             font-size: 20px;
           }
@@ -71,6 +78,15 @@
 }
 
 .search__section {
+  &--list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include respond(tab-port) {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
   &--slider {
     padding: 10px;
     p {
@@ -120,9 +136,22 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    @include respond(tab-port) {
+      margin-top: 1.2rem;
+    }
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   &--toggles {
     display: flex;
+    @include respond(phone) {
+      flex-direction: column;
+      div {
+        margin-bottom: 0.8rem;
+      }
+    }
   }
 
   &--buttons {
@@ -160,6 +189,9 @@
     padding: 1px 13px;
     border-radius: 12px;
     border: 1px solid var(--color-senary);
+    @include respond(phone) {
+      margin-left: 0px;
+    }
     p {
       margin: 0;
       font-size: 14px;
@@ -189,6 +221,9 @@
     display: flex;
     align-items: center;
     border-radius: 12px;
+    @include respond(phone) {
+      margin-bottom: 0.8rem;
+    }
     span {
       font-size: 12px;
       color: var(--font-color);

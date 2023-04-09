@@ -38,7 +38,7 @@ const ListCard = ({ item }) => {
     <div className="list__card">
       <div className="card">
         <Grid container>
-          <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
+          <Grid item xs={12} sm={1.8} md={1} lg={1} xl={1}>
             <div className="user__info">
               <div
                 className="user__image"
@@ -56,7 +56,7 @@ const ListCard = ({ item }) => {
             </div>
           </Grid>
 
-          <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+          <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
             <div className="card__body">
               <div className="">
                 <h3 className="user__name">{personName}</h3>
@@ -86,7 +86,7 @@ const ListCard = ({ item }) => {
               ​
             </div>
           </Grid>
-          <Grid item xs={3.2} sm={3.2} md={3.2} lg={3.2} xl={3.2}>
+          <Grid item xs={12} sm={3.2} md={3.2} lg={3.2} xl={3.2}>
             <div className="card__body--boxes">
               {skills.map((item, i) => (
                 <div className="box cylinder--box--1" key={i}>
@@ -96,7 +96,7 @@ const ListCard = ({ item }) => {
               <div className="box round--box">+3</div>
             </div>
           </Grid>
-          <Grid item xs={4.8} sm={4.8} md={4.8} lg={4.8} xl={4.8}>
+          <Grid item xs={12} sm={4} md={4.8} lg={4.8} xl={4.8}>
             <div className="card__header">
               <div className="card__header--images">
                 {projectImages.map((item, i) => (

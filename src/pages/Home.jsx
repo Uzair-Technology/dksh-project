@@ -298,7 +298,7 @@ const Home = () => {
       {toggleButton === true ? (
         <div className="search__section">
           <div className="container">
-            <div className="search__section--list flex-between">
+            <div className="search__section--list">
               <div className="search__section--right">
                 <div className="search__section--price">
                   <div className="search__section--dropdown">

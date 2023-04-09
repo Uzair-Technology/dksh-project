@@ -52,7 +52,7 @@ const GridCard = ({ item }) => {
               className="user__image"
               style={{ backgroundImage: `url(/images/${personImage})` }}
             ></div>
-            <h5 className="user__name">{personName}</h5>
+            <h5 className="user__name">{personName}</h5>{" "}
             {verified ? (
               <img
                 src={`/images/correct.png`}

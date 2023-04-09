@@ -59,8 +59,9 @@
 
 .user__info {
   position: absolute;
-  left: 85px;
-  top: 67px;
+  // left: 33%;
+  top: 67%;
+  width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
@@ -90,7 +91,14 @@
   height: 22px;
   position: absolute;
   top: 40px;
-  left: 62%;
+  left: 55%;
+
+  @include respond(tab-port) {
+    left: 55%;
+  }
+  @include respond(phone) {
+    left: 53%;
+  }
 }
 
 .user__image img {
