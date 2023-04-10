@@ -7,9 +7,11 @@
   --text-color: rgba(93, 105, 116, 1);
   --color-senary: #edf0f3;
   --background-shadow: rgba(255, 255, 255, 0.48);
+  --bar-color: #000;
 }
 
 [data-theme="dark"] {
+  --bar-color: #fff;
   --font-color: #eee;
   --background-color: #090b0c;
   --link-color: rgb(10, 14, 15);

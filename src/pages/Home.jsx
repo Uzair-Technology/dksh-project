@@ -32,6 +32,7 @@ import { styled, alpha, Box } from "@mui/system";
 import SliderUnstyled, {
   sliderUnstyledClasses,
 } from "@mui/base/SliderUnstyled";
+import Footer from "../common/footer/Footer";
 
 const blue = {
   100: "#DAECFF",
@@ -511,6 +512,8 @@ const Home = () => {
       ) : isActive === 1 ? (
         <ListSection data={data} />
       ) : null}
+
+      <Footer />
     </div>
   );
 };
