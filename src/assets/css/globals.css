@@ -1144,7 +1144,7 @@ input:checked + .slider {
 }
 @media (max-width: 60em) {
   .modal__section .card {
-    width: 200px;
+    width: 220px;
   }
 }
 
@@ -1221,6 +1221,7 @@ input:checked + .slider {
 
 #modal__card {
   overflow-y: scroll;
+  width: inherit;
 }
 
 #modal__card::-webkit-scrollbar {
@@ -1250,7 +1251,7 @@ input:checked + .slider {
 }
 @media (max-width: 60em) {
   .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-    max-width: 260px !important;
+    max-width: 280px !important;
   }
 }
 
@@ -1271,7 +1272,7 @@ input:checked + .slider {
 }
 @media (max-width: 60em) {
   .css-uhb5lp {
-    max-width: 260px !important;
+    max-width: 280px !important;
   }
 }
 
