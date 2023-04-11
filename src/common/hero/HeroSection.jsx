@@ -58,7 +58,7 @@ const HeroSection = () => {
         <div className="hero__section--box">
           <div className="hero__section--container">
             <div className="hero__section--title">
-              <h3>Welcome, john</h3>
+              <h3>Welcome, John ✋</h3>
               <p>Let's explore DKSH's top talent</p>
             </div>
             <div className="hero__section--buttons">

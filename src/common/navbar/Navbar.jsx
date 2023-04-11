@@ -76,7 +76,6 @@ const sideVariants = {
 };
 
 const Navbar = () => {
-  const [open, cycleOpen] = useCycle(false, true);
   const [inputText, setInputText] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
@@ -140,7 +139,7 @@ const Navbar = () => {
     <div className="navbar__container">
       <div className="navbar__container--list">
         <Grid container justifyContent="space-between">
-          <Grid item xs={1.6} sm={1.6} md={1.6} lg={1.6} xl={1.6}>
+          <Grid item xs={0} sm={1.6} md={1.6} lg={1.6} xl={1.6}>
             <div className="navbar__container--icon">
               {currentTheme === "dark" ? (
                 <img src={`/images/logoDark.png`} alt="" />
@@ -149,7 +148,66 @@ const Navbar = () => {
               )}
             </div>
           </Grid>
-          <Grid item xs={0} sm={8} md={2} lg={4} xl={4}>
+
+          <div
+            className="new__bar navbar__container--info"
+            style={{ width: "100%" }}
+          >
+            <div className="new__bar navbar__container--info1">
+              <div>
+                <ul>
+                  <li style={{ marginTop: "-10px" }}>
+                    <Avatar
+                      alt="Cindy Baker"
+                      xs={{ innerHeight: 18 }}
+                      src={`/images/male-02.png`}
+                      style={{ marginRight: "5px" }}
+                    />
+                    <span>John</span>
+                    <MdOutlineKeyboardArrowDown />
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <li>
+                    {" "}
+                    <div className="toggle-theme-wrapper">
+                      <label className="toggle-theme" htmlFor="checkbox">
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          onChange={toggleTheme}
+                          defaultChecked={defaultDark}
+                        />
+                        <div className="slider round"></div>
+                      </label>
+                    </div>
+                  </li>
+                  <li>
+                    <Link hrefLang="/">
+                      {" "}
+                      <BsChatDots />
+                      <div className="new__bar navbar__container--online">
+                        <div></div>
+                      </div>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link hrefLang="/">
+                      {" "}
+                      <MdNotifications size={23} />
+                      <div className="new__bar navbar__container--online">
+                        <div></div>
+                      </div>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <Grid item xs={12} sm={8} md={2} lg={4} xl={4}>
             <div className="navbar__container--search">
               <input
                 placeholder="Search here"
@@ -172,121 +230,6 @@ const Navbar = () => {
               ) : (
                 ""
               )}
-            </div>
-          </Grid>
-
-          {/* animated hamburger */}
-          <Grid item xs={0} sm={0} md={0} lg={0} xl={0}>
-            <div>
-              <div className="navbar__container--hamburger">
-                <AnimatePresence>
-                  {open && (
-                    <motion.aside
-                      initial={{ translateX: 300 }}
-                      animate={{
-                        width: "100%",
-                        //x: "-300px"
-                        translateX: 0,
-                      }}
-                      exit={{
-                        //width: 0,
-                        translateX: 300,
-                        transition: { delay: 0.7, duration: 0.3 },
-                      }}
-                    >
-                      <motion.div
-                        className="hamburger__container"
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                        variants={sideVariants}
-                      >
-                        <div>
-                          <ul>
-                            <motion.li
-                              whileHover={{ scale: 1.1 }}
-                              variants={itemVariants}
-                            >
-                              <BiHomeCircle />
-                              <Link hrefLang="/"> Home</Link>
-                            </motion.li>
-                            <motion.li>
-                              <IoPeopleOutline />
-                              <Link hrefLang="/">Network</Link>
-                            </motion.li>
-                            <motion.li>
-                              <BiShoppingBag />
-                              <Link hrefLang="/"> Jobs</Link>
-                            </motion.li>
-                            <div className="toggle-theme-wrapper">
-                              <label
-                                className="toggle-theme"
-                                htmlFor="checkbox"
-                              >
-                                <input
-                                  type="checkbox"
-                                  id="checkbox"
-                                  onChange={toggleTheme}
-                                  defaultChecked={defaultDark}
-                                />
-                                <div className="slider round"></div>
-                              </label>
-                            </div>
-                            <div
-                              className="navbar__container--info"
-                              style={{ display: "inline" }}
-                            >
-                              <div className="navbar__container--info1">
-                                <ul>
-                                  <li>
-                                    <Link hrefLang="/">
-                                      {" "}
-                                      <BsChatDots />
-                                      <div className="navbar__container--online">
-                                        <div></div>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link hrefLang="/">
-                                      {" "}
-                                      <MdNotifications size={23} />
-                                      <div className="navbar__container--online">
-                                        <div></div>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                  <li style={{ marginTop: "-10px" }}>
-                                    <span> John</span>
-                                    <Avatar
-                                      alt="Cindy Baker"
-                                      xs={{ innerHeight: 18 }}
-                                      src={`/images/male-02.png`}
-                                    />
-                                    <MdOutlineKeyboardArrowDown />
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-
-                            <motion.li
-                              whileHover={{ scale: 1.1 }}
-                              variants={itemVariants}
-                            ></motion.li>
-                          </ul>
-                        </div>
-                      </motion.div>
-                    </motion.aside>
-                  )}
-                </AnimatePresence>
-                <button onClick={() => cycleOpen()}>
-                  {open ? (
-                    <GiTireIronCross size={22} />
-                  ) : (
-                    <GiHamburgerMenu size={25} />
-                  )}
-                </button>
-              </div>
             </div>
           </Grid>
 

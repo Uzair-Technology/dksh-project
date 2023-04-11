@@ -11,6 +11,9 @@
     margin: 18px 18px 0 18px;
     z-index: 1111;
     padding: 10px 10px 0px 10px;
+    @include respond(phone) {
+      margin: 18px 0px 0 0px;
+    }
     ul {
       img {
         font-size: 15px;

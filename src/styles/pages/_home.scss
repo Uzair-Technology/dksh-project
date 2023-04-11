@@ -1,3 +1,103 @@
+aside {
+  background-color: var(--background-color);
+  height: 100vh;
+  position: fixed;
+  /* bottom: 0; */
+  top: 0;
+  left: 0;
+  z-index: 111;
+}
+
+.hamburger__container .navbar__container--info1 {
+  ul li {
+    margin: 4px 0;
+  }
+}
+
+.hamburger__container {
+  height: 100%;
+  width: 100%;
+  text-align: start;
+  /* bottom: 0; */
+  /* margin: 2rem 2rem; */
+  position: absolute;
+
+  &--card {
+    width: 70%;
+    margin: 1rem auto;
+  }
+}
+
+.filtration__container--hamburger .search__section {
+  display: none;
+  @include respond(phone) {
+    display: inline;
+  }
+}
+
+.show__talent--desktop {
+  display: inline;
+  @include respond(phone) {
+    display: none;
+  }
+}
+
+.show__talent--mobile {
+  display: none;
+  @include respond(phone) {
+    display: inline;
+  }
+}
+
+.hamburger__container {
+  &--button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      background-color: transparent;
+      border: none;
+
+      svg {
+        color: var(--font-color);
+      }
+    }
+  }
+
+  &--footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin: 0 0.2rem;
+      background-color: transparent;
+      font-weight: 600;
+      border: 1px solid #fbfbfc;
+      padding: 10px 6px;
+      color: var(--font-color);
+      background-color: var(--banner-color);
+      border-radius: 12px;
+      svg {
+        font-size: 1.2rem;
+        margin: 0 0.6rem 0 0;
+        color: var(--font-color);
+      }
+    }
+  }
+}
+
+.filtration__container {
+  display: none;
+  @include respond(phone) {
+    display: inline;
+  }
+}
+
 .show__talent {
   &--title {
     p {
@@ -30,6 +130,9 @@
   }
 
   &--options {
+    @include respond(phone) {
+      display: none;
+    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,6 +181,10 @@
 }
 
 .search__section {
+  display: inline;
+  @include respond(phone) {
+    display: none;
+  }
   &--list {
     display: flex;
     align-items: center;
@@ -125,6 +232,9 @@
       border-radius: 12px;
       border: 1px solid gray;
       color: black;
+      @include respond(phone) {
+        width: 100px;
+      }
     }
     div {
       display: flex;
@@ -142,6 +252,7 @@
     @include respond(phone) {
       display: flex;
       flex-direction: column;
+      width: 250px;
     }
   }
   &--toggles {
@@ -164,6 +275,9 @@
       height: 44px;
       border-radius: 12px;
       cursor: pointer;
+      @include respond(phone) {
+        width: 115px;
+      }
     }
   }
   &--cancel {

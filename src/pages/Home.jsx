@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import jsonData from "../assets/data/data.json";
+import { RxCross2 } from "react-icons/rx";
 
 const Buttons = [
   {
@@ -33,6 +34,14 @@ import SliderUnstyled, {
   sliderUnstyledClasses,
 } from "@mui/base/SliderUnstyled";
 import Footer from "../common/footer/Footer";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
+
+import {
+  GiFamilyHouse,
+  GiHamburgerMenu,
+  GiTireIronCross,
+} from "react-icons/gi";
+import { AiOutlineCheck } from "react-icons/ai";
 
 const blue = {
   100: "#DAECFF",
@@ -147,8 +156,33 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
+const itemVariants = {
+  closed: {
+    opacity: 0,
+  },
+  open: {
+    opacity: 1,
+  },
+};
+
+const sideVariants = {
+  closed: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: -1,
+    },
+  },
+  open: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+};
+
 const Home = () => {
   //*states
+  const [open, cycleOpen] = useCycle(false, true);
   const [data, setData] = useState(jsonData);
   const [isActive, setIsActive] = useState(0);
   const [toggleButton, setToggleButton] = useState(false);
@@ -284,8 +318,22 @@ const Home = () => {
 
                 <div className="show__talent--filter">
                   <button
-                    className={!toggleButton === false ? "active" : ""}
-                    onClick={() => setToggleButton(!toggleButton)}
+                    className={`show__talent--desktop ${
+                      !toggleButton === false ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      setToggleButton(!toggleButton);
+                    }}
+                  >
+                    <BiFilterAlt />
+                  </button>
+                  <button
+                    className={`show__talent--mobile ${
+                      !toggleButton === false ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      cycleOpen();
+                    }}
                   >
                     <BiFilterAlt />
                   </button>
@@ -296,207 +344,480 @@ const Home = () => {
         </div>
       </div>
 
-      {toggleButton === true ? (
-        <div className="search__section">
-          <div className="container">
-            <div className="search__section--list">
-              <div className="search__section--right">
-                <div className="search__section--price">
-                  <div className="search__section--dropdown">
-                    <label
-                      htmlFor="prices"
-                      id="basic-button"
-                      aria-controls={open1 ? "basic-menu" : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open1 ? "true" : undefined}
-                      onClick={handleClick1}
-                    >
-                      <FaMoneyBillWave /> Price per hr: ${value?.[0]}
-                    </label>
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl1}
-                      open={open1}
-                      onClose={handleClose1}
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
-                      PaperProps={{
-                        style: {
-                          maxHeight: ITEM_HEIGHT * 50,
-                          width: "30ch",
-                          marginTop: "1ch",
-                          marginLeft: "-.7ch",
-                        },
-                      }}
-                    >
-                      <div className="search__section--slider">
-                        <p>Price</p>
-                        <div className="search__section--range">
-                          {/* controlled: */}
-                          <StyledSlider
-                            value={value}
-                            onChange={handleChange}
-                            getAriaLabel={() => "Temperature range"}
-                            getAriaValueText={valuetext}
-                            min={0}
-                            max={1000}
-                          />
-                        </div>
-                        <div className="search__section--prices flex-between">
-                          <span>{value?.[0]}$</span>
-                          <span>{value?.[1]}$</span>
-                        </div>
-                        <div className="search__section--input">
-                          <div className="search__section--from">
-                            <label htmlFor="from">From</label>
-                            <input
-                              type="text"
-                              disabled
-                              placeholder={`${value?.[0]}$`}
-                              value={value?.[0]}
-                              onChange={handleChange}
-                            />
+      {/* hamburger for filtration */}
+      <div className="filtration__container--hamburger">
+        <AnimatePresence>
+          {open && (
+            <motion.aside
+              initial={{ translateX: 300 }}
+              animate={{
+                width: "100%",
+                //x: "-300px"
+                translateX: 0,
+              }}
+              exit={{
+                //width: 0,
+                translateX: 300,
+                transition: { delay: 0.7, duration: 0.3 },
+              }}
+            >
+              <motion.div
+                className="hamburger__container"
+                initial="closed"
+                animate="open"
+                exit="closed"
+                variants={sideVariants}
+              >
+                <div className="hamburger__container--card">
+                  <div className="hamburger__container--button">
+                    <h3>Filters</h3>
+                    <button onClick={() => cycleOpen()}>
+                      <GiTireIronCross size={22} />
+                    </button>
+                  </div>
+                  <div className="search__section">
+                    <div className="container">
+                      <div className="search__section--list">
+                        <div className="search__section--right">
+                          <div
+                            className="search__section--price"
+                            style={{ width: "100%" }}
+                          >
+                            <div className="search__section--dropdown">
+                              <label
+                                htmlFor="prices"
+                                id="basic-button"
+                                aria-controls={open1 ? "basic-menu" : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open1 ? "true" : undefined}
+                                onClick={handleClick1}
+                              >
+                                <FaMoneyBillWave /> Price per hr: ${value?.[0]}
+                              </label>
+                              <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl1}
+                                open={open1}
+                                onClose={handleClose1}
+                                MenuListProps={{
+                                  "aria-labelledby": "basic-button",
+                                }}
+                                PaperProps={{
+                                  style: {
+                                    maxHeight: ITEM_HEIGHT * 50,
+                                    width: "30ch",
+                                    marginTop: "1ch",
+                                    marginLeft: "-.7ch",
+                                  },
+                                }}
+                              >
+                                <div className="search__section--slider">
+                                  <p>Price</p>
+                                  <div className="search__section--range">
+                                    {/* controlled: */}
+                                    <StyledSlider
+                                      value={value}
+                                      onChange={handleChange}
+                                      getAriaLabel={() => "Temperature range"}
+                                      getAriaValueText={valuetext}
+                                      min={0}
+                                      max={1000}
+                                    />
+                                  </div>
+                                  <div className="search__section--prices flex-between">
+                                    <span>{value?.[0]}$</span>
+                                    <span>{value?.[1]}$</span>
+                                  </div>
+                                  <div className="search__section--input">
+                                    <div className="search__section--from">
+                                      <label htmlFor="from">From</label>
+                                      <input
+                                        type="text"
+                                        disabled
+                                        placeholder={`${value?.[0]}$`}
+                                        value={value?.[0]}
+                                        onChange={handleChange}
+                                      />
+                                    </div>
+                                    <div className="search__section--to">
+                                      <label htmlFor="from">To</label>
+                                      <input
+                                        type="text"
+                                        disabled
+                                        placeholder={`${value?.[1]}$`}
+                                        value={value?.[1]}
+                                        onChange={handleChange}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="search__section--buttons">
+                                    <div className="search__section--cancel">
+                                      <button onClick={handleClose1}>
+                                        Cancel
+                                      </button>
+                                    </div>
+                                    <div className="search__section--apply">
+                                      <button onClick={handleFilterPrice}>
+                                        Apply
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </Menu>
+                            </div>
                           </div>
-                          <div className="search__section--to">
-                            <label htmlFor="from">To</label>
-                            <input
-                              type="text"
-                              disabled
-                              placeholder={`${value?.[1]}$`}
-                              value={value?.[1]}
-                              onChange={handleChange}
-                            />
+                          <div
+                            className="search__section--services"
+                            style={{ width: "100%" }}
+                          >
+                            <div className="search__section--dropdown">
+                              <label
+                                for="services"
+                                id="basic-button"
+                                aria-controls={open2 ? "basic-menu" : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open2 ? "true" : undefined}
+                                onClick={handleClick2}
+                              >
+                                <FaTags />{" "}
+                                <p className="search__section--label">
+                                  Services:
+                                </p>{" "}
+                                <span>{service}</span>
+                              </label>
+
+                              <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl2}
+                                open={open2}
+                                onClose={handleClose2}
+                                MenuListProps={{
+                                  "aria-labelledby": "basic-button",
+                                }}
+                                PaperProps={{
+                                  style: {
+                                    maxHeight: ITEM_HEIGHT * 4.5,
+                                    width: "13ch",
+                                    marginTop: ".3ch",
+                                    marginLeft: "0ch",
+                                  },
+                                }}
+                              >
+                                <select
+                                  name="cars"
+                                  id="cars"
+                                  value={service}
+                                  onChange={(e) => setService(e.target.value)}
+                                >
+                                  <option value="all" selected>
+                                    All
+                                  </option>
+                                  <option value="UI">UI Design</option>
+                                  <option value="Front-end">Frontend</option>
+                                  <option value="Backend">Backend</option>
+                                  <option value="NFT">Nft</option>
+                                </select>
+                              </Menu>
+                            </div>
+                          </div>
+                          <div
+                            className="search__section--rate"
+                            style={{ width: "100%" }}
+                          >
+                            <div className="search__section--dropdown">
+                              <label
+                                for="sort"
+                                id="basic-button"
+                                aria-controls={open3 ? "basic-menu" : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open3 ? "true" : undefined}
+                                onClick={handleClick3}
+                              >
+                                <CgSortAz size={20} />
+                                <p className="search__section--label">
+                                  Sort by:
+                                </p>{" "}
+                                <span>Rating</span>
+                              </label>
+
+                              <Menu
+                                id="basic-menu"
+                                anchorEl={anchorEl3}
+                                open={open3}
+                                onClose={handleClose3}
+                                MenuListProps={{
+                                  "aria-labelledby": "basic-button",
+                                }}
+                                PaperProps={{
+                                  style: {
+                                    maxHeight: ITEM_HEIGHT * 4.5,
+                                    width: "13ch",
+                                    marginTop: ".3ch",
+                                    marginRight: "5ch",
+                                    right: 0,
+                                  },
+                                }}
+                              >
+                                <select
+                                  name="sort"
+                                  id="sort"
+                                  value={sort}
+                                  onChange={(e) => setSort(e.target.value)}
+                                >
+                                  <option value="volvo" selected disabled>
+                                    Rating
+                                  </option>
+
+                                  <option value="perHour">Price per hr</option>
+                                  <option value="topRated">Top rated</option>
+                                </select>
+                              </Menu>
+                            </div>
                           </div>
                         </div>
-                        <div className="search__section--buttons">
-                          <div className="search__section--cancel">
-                            <button onClick={handleClose1}>Cancel</button>
-                          </div>
-                          <div className="search__section--apply">
-                            <button onClick={handleFilterPrice}>Apply</button>
+                        <div className="search__section--right">
+                          <div className="search__section--toggles">
+                            <div className="search__section--available search__section--toggle">
+                              <Switch
+                                checked={available}
+                                onChange={handleAvailable}
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                              <p>Available to work</p>
+                            </div>
+                            <div className="search__section--tallent search__section--toggle">
+                              <Switch
+                                checked={talent}
+                                onChange={handleTalent}
+                                inputProps={{ "aria-label": "controlled" }}
+                              />
+                              <p>Pro tallent</p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </Menu>
+                    </div>
+                  </div>
+
+                  <div className="hamburger__container--footer">
+                    <button>
+                      <RxCross2 /> Reset filter
+                    </button>
+                    <button onClick={() => cycleOpen()}>
+                      <AiOutlineCheck /> Apply filter
+                    </button>
                   </div>
                 </div>
-                <div className="search__section--services">
-                  <div className="search__section--dropdown">
-                    <label
-                      for="services"
-                      id="basic-button"
-                      aria-controls={open2 ? "basic-menu" : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open2 ? "true" : undefined}
-                      onClick={handleClick2}
-                    >
-                      <FaTags />{" "}
-                      <p className="search__section--label">Services:</p>{" "}
-                      <span>{service}</span>
-                    </label>
+              </motion.div>
+            </motion.aside>
+          )}
+        </AnimatePresence>
+      </div>
 
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl2}
-                      open={open2}
-                      onClose={handleClose2}
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
-                      PaperProps={{
-                        style: {
-                          maxHeight: ITEM_HEIGHT * 4.5,
-                          width: "13ch",
-                          marginTop: ".3ch",
-                          marginLeft: "0ch",
-                        },
-                      }}
-                    >
-                      <select
-                        name="cars"
-                        id="cars"
-                        value={service}
-                        onChange={(e) => setService(e.target.value)}
+      {toggleButton === true ? (
+        <div>
+          {/* filtration for desktop */}
+          <div className="search__section">
+            <div className="container">
+              <div className="search__section--list">
+                <div className="search__section--right">
+                  <div className="search__section--price">
+                    <div className="search__section--dropdown">
+                      <label
+                        htmlFor="prices"
+                        id="basic-button"
+                        aria-controls={open1 ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open1 ? "true" : undefined}
+                        onClick={handleClick1}
                       >
-                        <option value="all" selected>
-                          All
-                        </option>
-                        <option value="UI">UI Design</option>
-                        <option value="Front-end">Frontend</option>
-                        <option value="Backend">Backend</option>
-                        <option value="NFT">Nft</option>
-                      </select>
-                    </Menu>
-                  </div>
-                </div>
-                <div className="search__section--rate">
-                  <div className="search__section--dropdown">
-                    <label
-                      for="sort"
-                      id="basic-button"
-                      aria-controls={open3 ? "basic-menu" : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open3 ? "true" : undefined}
-                      onClick={handleClick3}
-                    >
-                      <CgSortAz size={20} />
-                      <p className="search__section--label">Sort by:</p>{" "}
-                      <span>Rating</span>
-                    </label>
-
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl3}
-                      open={open3}
-                      onClose={handleClose3}
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
-                      PaperProps={{
-                        style: {
-                          maxHeight: ITEM_HEIGHT * 4.5,
-                          width: "13ch",
-                          marginTop: ".3ch",
-                          marginRight: "5ch",
-                          right: 0,
-                        },
-                      }}
-                    >
-                      <select
-                        name="sort"
-                        id="sort"
-                        value={sort}
-                        onChange={(e) => setSort(e.target.value)}
+                        <FaMoneyBillWave /> Price per hr: ${value?.[0]}
+                      </label>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl1}
+                        open={open1}
+                        onClose={handleClose1}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                        PaperProps={{
+                          style: {
+                            maxHeight: ITEM_HEIGHT * 50,
+                            width: "30ch",
+                            marginTop: "1ch",
+                            marginLeft: "-.7ch",
+                          },
+                        }}
                       >
-                        <option value="volvo" selected disabled>
-                          Rating
-                        </option>
+                        <div className="search__section--slider">
+                          <p>Price</p>
+                          <div className="search__section--range">
+                            {/* controlled: */}
+                            <StyledSlider
+                              value={value}
+                              onChange={handleChange}
+                              getAriaLabel={() => "Temperature range"}
+                              getAriaValueText={valuetext}
+                              min={0}
+                              max={1000}
+                            />
+                          </div>
+                          <div className="search__section--prices flex-between">
+                            <span>{value?.[0]}$</span>
+                            <span>{value?.[1]}$</span>
+                          </div>
+                          <div className="search__section--input">
+                            <div className="search__section--from">
+                              <label htmlFor="from">From</label>
+                              <input
+                                type="text"
+                                disabled
+                                placeholder={`${value?.[0]}$`}
+                                value={value?.[0]}
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="search__section--to">
+                              <label htmlFor="from">To</label>
+                              <input
+                                type="text"
+                                disabled
+                                placeholder={`${value?.[1]}$`}
+                                value={value?.[1]}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+                          <div className="search__section--buttons">
+                            <div className="search__section--cancel">
+                              <button onClick={handleClose1}>Cancel</button>
+                            </div>
+                            <div className="search__section--apply">
+                              <button onClick={handleFilterPrice}>Apply</button>
+                            </div>
+                          </div>
+                        </div>
+                      </Menu>
+                    </div>
+                  </div>
+                  <div className="search__section--services">
+                    <div className="search__section--dropdown">
+                      <label
+                        for="services"
+                        id="basic-button"
+                        aria-controls={open2 ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open2 ? "true" : undefined}
+                        onClick={handleClick2}
+                      >
+                        <FaTags />{" "}
+                        <p className="search__section--label">Services:</p>{" "}
+                        <span>{service}</span>
+                      </label>
 
-                        <option value="perHour">Price per hr</option>
-                        <option value="topRated">Top rated</option>
-                      </select>
-                    </Menu>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl2}
+                        open={open2}
+                        onClose={handleClose2}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                        PaperProps={{
+                          style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: "13ch",
+                            marginTop: ".3ch",
+                            marginLeft: "0ch",
+                          },
+                        }}
+                      >
+                        <select
+                          name="cars"
+                          id="cars"
+                          value={service}
+                          onChange={(e) => setService(e.target.value)}
+                        >
+                          <option value="all" selected>
+                            All
+                          </option>
+                          <option value="UI">UI Design</option>
+                          <option value="Front-end">Frontend</option>
+                          <option value="Backend">Backend</option>
+                          <option value="NFT">Nft</option>
+                        </select>
+                      </Menu>
+                    </div>
+                  </div>
+                  <div className="search__section--rate">
+                    <div className="search__section--dropdown">
+                      <label
+                        for="sort"
+                        id="basic-button"
+                        aria-controls={open3 ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open3 ? "true" : undefined}
+                        onClick={handleClick3}
+                      >
+                        <CgSortAz size={20} />
+                        <p className="search__section--label">Sort by:</p>{" "}
+                        <span>Rating</span>
+                      </label>
+
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl3}
+                        open={open3}
+                        onClose={handleClose3}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                        PaperProps={{
+                          style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: "13ch",
+                            marginTop: ".3ch",
+                            marginRight: "5ch",
+                            right: 0,
+                          },
+                        }}
+                      >
+                        <select
+                          name="sort"
+                          id="sort"
+                          value={sort}
+                          onChange={(e) => setSort(e.target.value)}
+                        >
+                          <option value="volvo" selected disabled>
+                            Rating
+                          </option>
+
+                          <option value="perHour">Price per hr</option>
+                          <option value="topRated">Top rated</option>
+                        </select>
+                      </Menu>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="search__section--right">
-                <div className="search__section--toggles">
-                  <div className="search__section--available search__section--toggle">
-                    <Switch
-                      checked={available}
-                      onChange={handleAvailable}
-                      inputProps={{ "aria-label": "controlled" }}
-                    />
-                    <p>Available to work</p>
-                  </div>
-                  <div className="search__section--tallent search__section--toggle">
-                    <Switch
-                      checked={talent}
-                      onChange={handleTalent}
-                      inputProps={{ "aria-label": "controlled" }}
-                    />
-                    <p>Pro tallent</p>
+                <div className="search__section--right">
+                  <div className="search__section--toggles">
+                    <div className="search__section--available search__section--toggle">
+                      <Switch
+                        checked={available}
+                        onChange={handleAvailable}
+                        inputProps={{ "aria-label": "controlled" }}
+                      />
+                      <p>Available to work</p>
+                    </div>
+                    <div className="search__section--tallent search__section--toggle">
+                      <Switch
+                        checked={talent}
+                        onChange={handleTalent}
+                        inputProps={{ "aria-label": "controlled" }}
+                      />
+                      <p>Pro tallent</p>
+                    </div>
                   </div>
                 </div>
               </div>
