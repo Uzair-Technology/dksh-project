@@ -123,7 +123,11 @@
   margin: 0 13px 15px 13px;
 
   @include respond(tab-port) {
-    width: 220px;
+    width: 250px;
+  }
+
+  @include respond(phone) {
+    width: 250px;
   }
 }
 
@@ -227,7 +231,10 @@
   max-width: 0px;
   right: 0;
   @include respond(tab-port) {
-    max-width: 280px !important;
+    max-width: 310px !important;
+  }
+  @include respond(phone) {
+    max-width: 310px !important;
   }
 }
 .css-uhb5lp {
@@ -246,6 +253,10 @@
   max-width: 0px;
   right: 0;
   @include respond(tab-port) {
-    max-width: 280px !important;
+    max-width: 310px !important;
+  }
+
+  @include respond(phone) {
+    max-width: 310px !important;
   }
 }

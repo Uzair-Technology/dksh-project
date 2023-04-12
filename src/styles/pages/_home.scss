@@ -361,6 +361,9 @@ aside {
       color: var(--font-color);
       margin-right: 5px;
       padding: 2px 15px;
+      @include respond(phone) {
+        width: 100%;
+      }
       svg {
         font-size: 16px;
         margin-right: 5px;
