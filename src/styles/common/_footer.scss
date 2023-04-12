@@ -5,6 +5,11 @@
   }
   &--container {
     background-color: var(--banner-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 2rem;
   }
   &--bar {
     display: flex;

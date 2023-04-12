@@ -4,7 +4,7 @@ import ListCard from "../../components/cards/ListCard";
 
 const ListSection = ({ data }) => {
   return (
-    <div className="grid__section">
+    <div className="grid__section" style={{ marginBottom: "5rem" }}>
       <div className="container">
         <div className="grid__section--list">
           <Grid container spacing={2}>

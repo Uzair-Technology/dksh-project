@@ -477,6 +477,11 @@ input:checked + .slider {
 }
 .footer__section--container {
   background-color: var(--banner-color);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 2rem;
 }
 .footer__section--bar {
   display: flex;
