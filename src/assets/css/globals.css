@@ -1319,8 +1319,8 @@ aside {
   position: absolute;
 }
 .hamburger__container--card {
-  width: 70%;
-  margin: 1rem auto;
+  width: 80%;
+  margin: 0.8rem auto;
 }
 
 .filtration__container--hamburger .search__section {
@@ -1496,6 +1496,11 @@ aside {
 .search__section--slider {
   padding: 10px;
 }
+@media (max-width: 37.5em) {
+  .search__section--slider {
+    padding: 0;
+  }
+}
 .search__section--slider p {
   margin-top: 0;
 }
@@ -1517,6 +1522,10 @@ aside {
   align-items: center;
   margin-top: 10px;
 }
+.search__section--input div {
+  display: flex;
+  flex-direction: column;
+}
 .search__section--input label {
   font-size: 12px;
   color: black;
@@ -1536,10 +1545,6 @@ aside {
     width: 100px;
   }
 }
-.search__section--input div {
-  display: flex;
-  flex-direction: column;
-}
 .search__section--right {
   display: flex;
   justify-content: flex-start;
@@ -1554,7 +1559,7 @@ aside {
   .search__section--right {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 300px;
   }
 }
 .search__section--toggles {
@@ -1586,13 +1591,13 @@ aside {
   }
 }
 .search__section--cancel button {
-  border: 1px solid #edf0f3;
-  background-color: transparent;
+  border: 1px solid #edf0f3 !important;
+  background-color: transparent !important;
 }
 .search__section--apply button {
-  background-color: var(--color-blue);
-  color: #fff;
-  border: none;
+  background-color: var(--color-blue) !important;
+  color: #fff !important;
+  border: none !important;
 }
 .search__section--toggle {
   display: flex;
@@ -1636,7 +1641,8 @@ aside {
 }
 @media (max-width: 37.5em) {
   .search__section--dropdown {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
+    border: none;
   }
 }
 .search__section--dropdown span {
@@ -1665,6 +1671,10 @@ aside {
 @media (max-width: 37.5em) {
   .search__section--dropdown label {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2px 0px;
   }
 }
 .search__section--dropdown label svg {
@@ -1728,6 +1738,34 @@ select#sort:focus {
   max-height: 85vh;
   padding: 15px;
   right: 2%;
+}
+
+.selected {
+  font-weight: 600;
+}
+
+.dropdown__label {
+  display: flex;
+  align-items: center;
+}
+.dropdown__label svg {
+  margin-right: 5px;
+}
+.dropdown__label span {
+  font-size: 0.9rem;
+  margin-left: 3px;
+}
+
+.css-183mf81-MuiPaper-root-MuiAccordion-root:last-of-type {
+  border-radius: 12px !important;
+}
+
+.css-1i054hg-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  border-bottom: none !important;
+}
+
+.css-1i054hg-MuiButtonBase-root-MuiAccordionSummary-root {
+  border-bottom: none;
 }
 
 /*# sourceMappingURL=globals.css.map */

@@ -15,6 +15,27 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import jsonData from "../assets/data/data.json";
 import { RxCross2 } from "react-icons/rx";
+import { styled, alpha, Box } from "@mui/system";
+import SliderUnstyled, {
+  sliderUnstyledClasses,
+} from "@mui/base/SliderUnstyled";
+import Footer from "../common/footer/Footer";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import {
+  GiFamilyHouse,
+  GiHamburgerMenu,
+  GiTireIronCross,
+} from "react-icons/gi";
+import { AiOutlineCheck } from "react-icons/ai";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Buttons = [
   {
@@ -28,20 +49,6 @@ const Buttons = [
     icon: BiListUl,
   },
 ];
-
-import { styled, alpha, Box } from "@mui/system";
-import SliderUnstyled, {
-  sliderUnstyledClasses,
-} from "@mui/base/SliderUnstyled";
-import Footer from "../common/footer/Footer";
-import { AnimatePresence, motion, useCycle } from "framer-motion";
-
-import {
-  GiFamilyHouse,
-  GiHamburgerMenu,
-  GiTireIronCross,
-} from "react-icons/gi";
-import { AiOutlineCheck } from "react-icons/ai";
 
 const blue = {
   100: "#DAECFF",
@@ -181,6 +188,12 @@ const sideVariants = {
 };
 
 const Home = () => {
+  const [age, setAge] = React.useState("");
+
+  const handleChangeAge = (event) => {
+    setAge(event.target.value);
+  };
+
   //*states
   const [open, cycleOpen] = useCycle(false, true);
   const [data, setData] = useState(jsonData);
@@ -287,6 +300,20 @@ const Home = () => {
 
   const ITEM_HEIGHT = 48;
 
+  //** custom selection arrays
+  const servicesArray = [
+    { value: "all", label: "All" },
+    { value: "Front-end", label: "Frontend" },
+    { value: "Backend", label: "Backend" },
+    { value: "NFT", label: "NFT" },
+    { value: "UI", label: "UI" },
+  ];
+
+  const sortsArray = [
+    { value: "perHour", label: "Price per hr" },
+    { value: "topRated", label: "Top Rated" },
+  ];
+
   return (
     <div>
       <Navbar />
@@ -384,147 +411,193 @@ const Home = () => {
                             style={{ width: "100%" }}
                           >
                             <div className="search__section--dropdown">
-                              <label
-                                htmlFor="prices"
-                                id="basic-button"
-                                aria-controls={open1 ? "basic-menu" : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open1 ? "true" : undefined}
-                                onClick={handleClick1}
-                              >
-                                <FaMoneyBillWave /> Price per hr: ${value?.[0]}
-                              </label>
-                              <Menu
-                                id="basic-menu"
-                                anchorEl={anchorEl1}
-                                open={open1}
-                                onClose={handleClose1}
-                                MenuListProps={{
-                                  "aria-labelledby": "basic-button",
-                                }}
-                                PaperProps={{
-                                  style: {
-                                    maxHeight: ITEM_HEIGHT * 50,
-                                    width: "30ch",
-                                    marginTop: "1ch",
-                                    marginLeft: "-.7ch",
-                                  },
+                              <Accordion
+                                sx={{
+                                  width: "100%",
                                 }}
                               >
-                                <div className="search__section--slider">
-                                  <p>Price</p>
-                                  <div className="search__section--range">
-                                    {/* controlled: */}
-                                    <StyledSlider
-                                      value={value}
-                                      onChange={handleChange}
-                                      getAriaLabel={() => "Temperature range"}
-                                      getAriaValueText={valuetext}
-                                      min={0}
-                                      max={1000}
-                                    />
-                                  </div>
-                                  <div className="search__section--prices flex-between">
-                                    <span>{value?.[0]}$</span>
-                                    <span>{value?.[1]}$</span>
-                                  </div>
-                                  <div className="search__section--input">
-                                    <div className="search__section--from">
-                                      <label htmlFor="from">From</label>
-                                      <input
-                                        type="text"
-                                        disabled
-                                        placeholder={`${value?.[0]}$`}
-                                        value={value?.[0]}
-                                        onChange={handleChange}
-                                      />
+                                <AccordionSummary
+                                  expandIcon={<MdKeyboardArrowDown />}
+                                  aria-controls="panel1a-content"
+                                  id="panel1a-header"
+                                  sx={{
+                                    boxShadow: "none",
+                                    borderTop: "none",
+                                    borderBottom: "none",
+                                    width: "100%",
+                                  }}
+                                >
+                                  <Typography>
+                                    <div className="dropdown__label">
+                                      <FaMoneyBillWave /> Price per hr: $
+                                      {value?.[0]}
                                     </div>
-                                    <div className="search__section--to">
-                                      <label htmlFor="from">To</label>
-                                      <input
-                                        type="text"
-                                        disabled
-                                        placeholder={`${value?.[1]}$`}
-                                        value={value?.[1]}
-                                        onChange={handleChange}
-                                      />
+                                  </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                  <Typography>
+                                    <div className="search__section--slider">
+                                      <p>Price</p>
+                                      <div className="search__section--range">
+                                        {/* controlled: */}
+                                        <StyledSlider
+                                          value={value}
+                                          onChange={handleChange}
+                                          getAriaLabel={() =>
+                                            "Temperature range"
+                                          }
+                                          getAriaValueText={valuetext}
+                                          min={0}
+                                          max={1000}
+                                        />
+                                      </div>
+                                      <div className="search__section--prices flex-between">
+                                        <span>{value?.[0]}$</span>
+                                        <span>{value?.[1]}$</span>
+                                      </div>
+                                      <div className="search__section--input">
+                                        <div className="search__section--from">
+                                          <label htmlFor="from">From</label>
+                                          <input
+                                            type="text"
+                                            disabled
+                                            placeholder={`${value?.[0]}$`}
+                                            value={value?.[0]}
+                                            onChange={handleChange}
+                                          />
+                                        </div>
+                                        <div className="search__section--to">
+                                          <label htmlFor="from">To</label>
+                                          <input
+                                            type="text"
+                                            disabled
+                                            placeholder={`${value?.[1]}$`}
+                                            value={value?.[1]}
+                                            onChange={handleChange}
+                                          />
+                                        </div>
+                                      </div>
+                                      <div className="search__section--buttons">
+                                        <div className="search__section--cancel">
+                                          <button onClick={handleClose1}>
+                                            Cancel
+                                          </button>
+                                        </div>
+                                        <div className="search__section--apply">
+                                          <button onClick={handleFilterPrice}>
+                                            Apply
+                                          </button>
+                                        </div>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div className="search__section--buttons">
-                                    <div className="search__section--cancel">
-                                      <button onClick={handleClose1}>
-                                        Cancel
-                                      </button>
-                                    </div>
-                                    <div className="search__section--apply">
-                                      <button onClick={handleFilterPrice}>
-                                        Apply
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Menu>
+                                  </Typography>
+                                </AccordionDetails>
+                              </Accordion>
                             </div>
                           </div>
+
                           <div
                             className="search__section--services"
                             style={{ width: "100%" }}
                           >
                             <div className="search__section--dropdown">
-                              <label
-                                for="services"
-                                id="basic-button"
-                                aria-controls={open2 ? "basic-menu" : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open2 ? "true" : undefined}
-                                onClick={handleClick2}
-                              >
-                                <FaTags />{" "}
-                                <p className="search__section--label">
-                                  Services:
-                                </p>{" "}
-                                <span>{service}</span>
-                              </label>
-
-                              <Menu
-                                id="basic-menu"
-                                anchorEl={anchorEl2}
-                                open={open2}
-                                onClose={handleClose2}
-                                MenuListProps={{
-                                  "aria-labelledby": "basic-button",
-                                }}
-                                PaperProps={{
-                                  style: {
-                                    maxHeight: ITEM_HEIGHT * 4.5,
-                                    width: "13ch",
-                                    marginTop: ".3ch",
-                                    marginLeft: "0ch",
-                                  },
+                              <Accordion
+                                sx={{
+                                  width: "100%",
                                 }}
                               >
-                                <select
-                                  name="cars"
-                                  id="cars"
-                                  value={service}
-                                  onChange={(e) => setService(e.target.value)}
+                                <AccordionSummary
+                                  expandIcon={<MdKeyboardArrowDown />}
+                                  aria-controls="panel1a-content"
+                                  id="panel1a-header"
+                                  sx={{
+                                    boxShadow: "none",
+                                    borderTop: "none",
+                                    borderBottom: "1px solid #cdcdcd",
+                                    width: "100%",
+                                    // marginBottom: "1rem"
+                                  }}
                                 >
-                                  <option value="all" selected>
-                                    All
-                                  </option>
-                                  <option value="UI">UI Design</option>
-                                  <option value="Front-end">Frontend</option>
-                                  <option value="Backend">Backend</option>
-                                  <option value="NFT">Nft</option>
-                                </select>
-                              </Menu>
+                                  <Typography>
+                                    <div className="dropdown__label">
+                                      <FaTags /> Services: {service}
+                                    </div>
+                                  </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                  <Typography>
+                                    <ul>
+                                      {servicesArray.map((item) => (
+                                        <li
+                                          key={item.value}
+                                          onClick={() => setService(item.value)}
+                                          className={
+                                            service === item.value
+                                              ? "selected"
+                                              : ""
+                                          }
+                                        >
+                                          {item.label}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </Typography>
+                                </AccordionDetails>
+                              </Accordion>
                             </div>
                           </div>
+
                           <div
                             className="search__section--rate"
                             style={{ width: "100%" }}
                           >
                             <div className="search__section--dropdown">
+                              <Accordion
+                                sx={{
+                                  width: "100%",
+                                }}
+                              >
+                                <AccordionSummary
+                                  expandIcon={<MdKeyboardArrowDown />}
+                                  aria-controls="panel2a-content"
+                                  id="panel2a-header"
+                                  sx={{
+                                    boxShadow: "none",
+                                    borderTop: "none",
+                                    borderBottom: "1px solid #cdcdcd",
+                                    width: "100%",
+                                    // marginBottom: "1rem"
+                                  }}
+                                >
+                                  <Typography>
+                                    <div className="dropdown__label">
+                                      <CgSortAz size={20} />
+                                      Sort by:
+                                      <span>{sort}</span>
+                                    </div>
+                                  </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                  <Typography>
+                                    <ul>
+                                      {sortsArray.map((item) => (
+                                        <li
+                                          key={item.value}
+                                          onClick={() => setSort(item.value)}
+                                          className={
+                                            sort === item.value
+                                              ? "selected"
+                                              : ""
+                                          }
+                                        >
+                                          {item.label}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </Typography>
+                                </AccordionDetails>
+                              </Accordion>
+                              {/* 
                               <label
                                 for="sort"
                                 id="basic-button"
@@ -571,7 +644,7 @@ const Home = () => {
                                   <option value="perHour">Price per hr</option>
                                   <option value="topRated">Top rated</option>
                                 </select>
-                              </Menu>
+                              </Menu> */}
                             </div>
                           </div>
                         </div>
@@ -838,5 +911,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

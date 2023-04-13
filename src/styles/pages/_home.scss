@@ -23,8 +23,8 @@ aside {
   position: absolute;
 
   &--card {
-    width: 70%;
-    margin: 1rem auto;
+    width: 80%;
+    margin: 0.8rem auto;
   }
 }
 
@@ -196,6 +196,9 @@ aside {
   }
   &--slider {
     padding: 10px;
+    @include respond(phone) {
+      padding: 0;
+    }
     p {
       margin-top: 0;
     }
@@ -219,6 +222,10 @@ aside {
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
     label {
       font-size: 12px;
       color: black;
@@ -236,10 +243,6 @@ aside {
         width: 100px;
       }
     }
-    div {
-      display: flex;
-      flex-direction: column;
-    }
   }
 
   &--right {
@@ -252,7 +255,7 @@ aside {
     @include respond(phone) {
       display: flex;
       flex-direction: column;
-      width: 250px;
+      width: 300px;
     }
   }
   &--toggles {
@@ -282,16 +285,16 @@ aside {
   }
   &--cancel {
     button {
-      border: 1px solid #edf0f3;
-      background-color: transparent;
+      border: 1px solid #edf0f3 !important;
+      background-color: transparent !important;
     }
   }
 
   &--apply {
     button {
-      background-color: var(--color-blue);
-      color: #fff;
-      border: none;
+      background-color: var(--color-blue) !important;
+      color: #fff !important;
+      border: none !important;
     }
   }
 
@@ -335,8 +338,10 @@ aside {
     display: flex;
     align-items: center;
     border-radius: 12px;
+
     @include respond(phone) {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0;
+      border: none;
     }
     span {
       font-size: 12px;
@@ -363,6 +368,10 @@ aside {
       padding: 2px 15px;
       @include respond(phone) {
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2px 0px;
       }
       svg {
         font-size: 16px;
@@ -432,4 +441,32 @@ select#sort:focus {
   max-height: 85vh;
   padding: 15px;
   right: 2%;
+}
+
+.selected {
+  font-weight: 600;
+}
+
+.dropdown__label {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 5px;
+  }
+  span {
+    font-size: 0.9rem;
+    margin-left: 3px;
+  }
+}
+
+.css-183mf81-MuiPaper-root-MuiAccordion-root:last-of-type {
+  border-radius: 12px !important;
+}
+
+.css-1i054hg-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  border-bottom: none !important;
+}
+
+.css-1i054hg-MuiButtonBase-root-MuiAccordionSummary-root {
+  border-bottom: none;
 }
