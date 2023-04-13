@@ -317,7 +317,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <HeroSection />
+      {/* checks if the total length of data changes means any filtration applied */}
+      <HeroSection
+        props={data.length < 16 ? [true, data.length] : [false, 0]}
+      />
 
       <div className="show__talent">
         <div className="container">

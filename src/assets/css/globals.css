@@ -1593,6 +1593,7 @@ aside {
 .search__section--cancel button {
   border: 1px solid #edf0f3 !important;
   background-color: transparent !important;
+  color: #000 !important;
 }
 .search__section--apply button {
   background-color: var(--color-blue) !important;
@@ -1663,7 +1664,7 @@ aside {
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
-  color: #000;
+  color: var(--font-color);
   margin-right: 5px;
   padding: 2px 15px;
 }

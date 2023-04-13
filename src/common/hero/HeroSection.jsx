@@ -33,7 +33,7 @@ const Buttons = [
   },
 ];
 
-const HeroSection = () => {
+const HeroSection = ({ props }) => {
   //* states
   const [isActive, setIsActive] = useState(0);
   const [currentTheme, setCurrentTheme] = useState(
@@ -58,22 +58,36 @@ const HeroSection = () => {
         <div className="hero__section--box">
           <div className="hero__section--container">
             <div className="hero__section--title">
-              <h3>Welcome, John ✋</h3>
-              <p>Let's explore DKSH's top talent</p>
+              {props[0] === false ? (
+                <>
+                  {" "}
+                  <h3>Welcome, John ✋</h3>
+                  <p>Let's explore DKSH's top talent</p>
+                </>
+              ) : (
+                <>
+                  <h3>Search results</h3>
+                  <p>{props[1]} talents found according to your request</p>
+                </>
+              )}
             </div>
             <div className="hero__section--buttons">
-              <ul className="mb-2">
-                {Buttons.map((item, index) => (
-                  <li key={item.id}>
-                    <button
-                      className={index === isActive ? "active" : ""}
-                      onClick={() => setIsActive(item.id)}
-                    >
-                      {item.text}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              {props[0] === false ? (
+                <ul className="mb-2">
+                  {Buttons.map((item, index) => (
+                    <li key={item.id}>
+                      <button
+                        className={index === isActive ? "active" : ""}
+                        onClick={() => setIsActive(item.id)}
+                      >
+                        {item.text}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="hero__section--vectors">
