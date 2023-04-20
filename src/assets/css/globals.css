@@ -1571,6 +1571,7 @@ aside {
   }
   .search__section--toggles div {
     margin-bottom: 0.8rem;
+    width: 250px;
   }
 }
 .search__section--buttons {
