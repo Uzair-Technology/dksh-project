@@ -600,54 +600,6 @@ const Home = () => {
                                   </Typography>
                                 </AccordionDetails>
                               </Accordion>
-                              {/* 
-                              <label
-                                for="sort"
-                                id="basic-button"
-                                aria-controls={open3 ? "basic-menu" : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open3 ? "true" : undefined}
-                                onClick={handleClick3}
-                              >
-                                <CgSortAz size={20} />
-                                <p className="search__section--label">
-                                  Sort by:
-                                </p>{" "}
-                                <span>Rating</span>
-                              </label>
-
-                              <Menu
-                                id="basic-menu"
-                                anchorEl={anchorEl3}
-                                open={open3}
-                                onClose={handleClose3}
-                                MenuListProps={{
-                                  "aria-labelledby": "basic-button",
-                                }}
-                                PaperProps={{
-                                  style: {
-                                    maxHeight: ITEM_HEIGHT * 4.5,
-                                    width: "13ch",
-                                    marginTop: ".3ch",
-                                    marginRight: "5ch",
-                                    right: 0,
-                                  },
-                                }}
-                              >
-                                <select
-                                  name="sort"
-                                  id="sort"
-                                  value={sort}
-                                  onChange={(e) => setSort(e.target.value)}
-                                >
-                                  <option value="volvo" selected disabled>
-                                    Rating
-                                  </option>
-
-                                  <option value="perHour">Price per hr</option>
-                                  <option value="topRated">Top rated</option>
-                                </select>
-                              </Menu> */}
                             </div>
                           </div>
                         </div>
@@ -803,26 +755,28 @@ const Home = () => {
                         PaperProps={{
                           style: {
                             maxHeight: ITEM_HEIGHT * 4.5,
-                            width: "13ch",
-                            marginTop: ".3ch",
+                            width: "14ch",
+                            marginTop: "1ch",
                             marginLeft: "0ch",
                           },
                         }}
                       >
-                        <select
-                          name="cars"
-                          id="cars"
-                          value={service}
-                          onChange={(e) => setService(e.target.value)}
-                        >
-                          <option value="all" selected>
-                            All
-                          </option>
-                          <option value="UI">UI Design</option>
-                          <option value="Front-end">Frontend</option>
-                          <option value="Backend">Backend</option>
-                          <option value="NFT">Nft</option>
-                        </select>
+                        <ul style={{ padding: "10px" }}>
+                          {servicesArray.map((item) => (
+                            <li
+                              key={item.value}
+                              onClick={() => {
+                                setService(item.value);
+                                handleClose2();
+                              }}
+                              className={
+                                service === item.value ? "selected" : ""
+                              }
+                            >
+                              {item.label}
+                            </li>
+                          ))}
+                        </ul>
                       </Menu>
                     </div>
                   </div>
@@ -838,7 +792,7 @@ const Home = () => {
                       >
                         <CgSortAz size={20} />
                         <p className="search__section--label">Sort by:</p>{" "}
-                        <span>Rating</span>
+                        <span>{sort}</span>
                       </label>
 
                       <Menu
@@ -852,26 +806,27 @@ const Home = () => {
                         PaperProps={{
                           style: {
                             maxHeight: ITEM_HEIGHT * 4.5,
-                            width: "13ch",
-                            marginTop: ".3ch",
+                            width: "16ch",
+                            marginTop: "1ch",
                             marginRight: "5ch",
                             right: 0,
                           },
                         }}
                       >
-                        <select
-                          name="sort"
-                          id="sort"
-                          value={sort}
-                          onChange={(e) => setSort(e.target.value)}
-                        >
-                          <option value="volvo" selected disabled>
-                            Rating
-                          </option>
-
-                          <option value="perHour">Price per hr</option>
-                          <option value="topRated">Top rated</option>
-                        </select>
+                        <ul style={{ padding: "10px" }}>
+                          {sortsArray.map((item) => (
+                            <li
+                              key={item.value}
+                              onClick={() => {
+                                setSort(item.value);
+                                handleClose3();
+                              }}
+                              className={sort === item.value ? "selected" : ""}
+                            >
+                              {item.label}
+                            </li>
+                          ))}
+                        </ul>
                       </Menu>
                     </div>
                   </div>
