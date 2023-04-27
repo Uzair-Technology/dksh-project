@@ -1049,7 +1049,7 @@ input:checked + .slider {
 }
 @media (max-width: 60em) {
   .modal__section .modal__header {
-    width: 220px;
+    width: 250px;
   }
 }
 

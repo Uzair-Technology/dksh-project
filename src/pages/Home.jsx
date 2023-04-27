@@ -628,7 +628,15 @@ const Home = () => {
                   </div>
 
                   <div className="hamburger__container--footer">
-                    <button>
+                    <button
+                      onClick={() => {
+                        setService("all");
+                        setValue([300, 700]);
+                        setTalent(false);
+                        setAvailable(false);
+                        setSort("");
+                      }}
+                    >
                       <RxCross2 /> Reset filter
                     </button>
                     <button onClick={() => cycleOpen()}>
